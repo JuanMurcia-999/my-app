@@ -1,7 +1,7 @@
 import { Table } from 'flowbite-react'
 import { MdOutlineDelete } from "react-icons/md";
 import DeleteSensor from '../../../services/Delete-sensor';
-
+import { ImStatsBars } from "react-icons/im";
 
 
 export default function ComTableFeatures({ features,reload }) {
@@ -40,6 +40,7 @@ const handleClick=(ID)=>{
                 <Table.Cell>{feature.timer}</Table.Cell>
                 <Table.Cell>{feature.id_feature} </Table.Cell>
                 <Table.Cell onClick={()=> {handleClick(feature.id_feature)}} > <MdOutlineDelete /> </Table.Cell>
+                <Table.Cell><ImStatsBars/></Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

@@ -1,8 +1,9 @@
 import { useEffect,useState } from 'react'
 import ComAddSesnor from '../components/AddSensor'
 import Get_FeaturesAgent from '../../../services/get_FeaturesAgent'
-import TableFeatures from '../components/tableFeatures'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
+import ComTableFeatures from '../../Home/Components/ComTableFeatures'
+import Graphics from '../components/Graphics'
 
 export function ViewSensors({ infoAgent }) {
   const [featuresAgent, setFeaturesAgent] = useState([])
@@ -15,9 +16,13 @@ export function ViewSensors({ infoAgent }) {
 
 
   return (
+    <>
+    <Graphics/>
     <div className="flex flex-col z-20 pt-2 mt-[2rem] mr-[10px] h-[100vh] bg-white  dark:bg-gray-700">
+      
         <ComAddSesnor infoagent={infoAgent} />
-        <TableFeatures features={featuresAgent}/>
+        <ComTableFeatures features={featuresAgent} reload={setReloadFeatures}/>
     </div>
-  )
+  </>)
 }
+//<TableFeatures features={featuresAgent}/>

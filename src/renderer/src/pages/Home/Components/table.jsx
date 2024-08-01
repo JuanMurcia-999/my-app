@@ -1,6 +1,7 @@
 import { Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 
+
 export default function ComTable({agents}) {
   return (
     <>
@@ -12,6 +13,7 @@ export default function ComTable({agents}) {
           <Table.HeadCell>Ip address</Table.HeadCell>
           <Table.HeadCell>ID agent</Table.HeadCell>
           <Table.HeadCell></Table.HeadCell>
+          
         </Table.Head>
         <Table.Body class="divide-y">
 
@@ -26,10 +28,11 @@ export default function ComTable({agents}) {
                 <Table.Cell>{agent.IP_address}</Table.Cell>
                 <Table.Cell>{agent.ID_agent}</Table.Cell>
                 <Table.Cell>
-                  <Link to={`/detalles/${agent.IP_address}`} class="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                  <Link to={`/detalles/${agent.IP_address}/${agent.ID_agent}/${agent.Hostname}`} class="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                     View
                   </Link>
                 </Table.Cell>
+               
               </Table.Row>
             )
 
