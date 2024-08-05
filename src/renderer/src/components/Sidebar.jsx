@@ -40,6 +40,7 @@ export default function ComSidebar() {
 
             <Sidebar.Collapse icon={BsFillFileTextFill} label="Mibs ">
               <Sidebar.Item href="#">Subir Mib</Sidebar.Item>
+              <Sidebar.Item href="#">Todas las MIB</Sidebar.Item>
             </Sidebar.Collapse>
           </Sidebar.ItemGroup>
         </Sidebar.Items>

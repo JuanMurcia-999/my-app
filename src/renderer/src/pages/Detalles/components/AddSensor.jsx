@@ -38,9 +38,10 @@ export default function ComAddSesnor({ infoagent }) {
 
   return (
     <>
-      <Button className=" w-[4rem]" onClick={() => setAddSesnor(true)}>
+      <Button className=" w-[4rem] ml-[10px]" onClick={() => setAddSesnor(true)}>
         <IoMdAddCircleOutline className="h-5 w-5" />
       </Button>
+
       <Modal dismissible show={openAddSesnor} onClose={() => setAddSesnor(false)}>
         <Modal.Header>Agregar nuevo sensor</Modal.Header>
         <Modal.Body>

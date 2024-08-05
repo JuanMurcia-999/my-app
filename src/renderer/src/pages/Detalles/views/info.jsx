@@ -14,7 +14,7 @@ export function ViewInfo() {
 
   return (
     <>
-      <div className="flex flex-col z-20  mt-[1rem] mr-[10px] h-[100vh] bg-white  dark:bg-gray-700">
+      <div className="flex flex-col z-20  m-[10px] h-[100vh] bg-pink-700  dark:bg-gray-700">
         <span> Interfaces</span>
         <TableIftable interfaces={iftable} />
       </div>

@@ -6,10 +6,9 @@ import { Button } from 'flowbite-react'
 import { CiViewTable } from 'react-icons/ci'
 import { PiCards } from 'react-icons/pi'
 import { useHomeContext } from '../../contexts/HomeProvaider'
-import { toast} from 'sonner';
+import { toast } from 'sonner'
 import Get_AllFeatures from '../../services/get-AllFeatures'
 import ComTableFeatures from './Components/ComTableFeatures'
-
 
 export default function Home() {
   const [agents, setAgents] = useState([])
@@ -25,25 +24,28 @@ export default function Home() {
     setReloadAgents(false)
   }, [reloadAgents])
 
-
   const handleChange = (event) => {
     setView(!view)
     setIcon(!icon)
   }
-  
-  
 
   return (
     <>
-      <div className="flex flex-col z-20 pt-2 mt-[2rem] mr-[10px] h-[100vh] bg-white  dark:bg-gray-700">
-        <Button className="w-[50px] ml-[30px]" onClick={handleChange} color="dark">
-          {icon ? <PiCards /> : <CiViewTable />}
-        </Button>
-        {view ? <ListOfAgents agents={agents} /> : <ComTable agents={agents} />}
+      <div className="flex flex-col z-20 pt-2 mt-[2rem] mr-[10px]  bg-red-700  dark:bg-gray-700  overflow-y-auto">
+
+        <div className='bg-purple-700 m-[10px] dark:bg-gray-700'>
+          <Button className="w-[50px] ml-[30px] mt-[10px] dark:bg-gray-900" onClick={handleChange} color="dark">
+            {icon ? <PiCards /> : <CiViewTable />}
+          </Button>
+          {view ? <ListOfAgents agents={agents} /> : <ComTable agents={agents} />}
+        </div>
+
         <span> Todos los sensores</span>
-        <ComTableFeatures features={features}  reload={setReloadAgents}/>
+        <div className=" bg-indigo-600 m-[10px] h-dvh  dark:bg-gray-700">
+          <ComTableFeatures features={features} reload={setReloadAgents} />
+
+        </div>
       </div>
-      
     </>
   )
 }
