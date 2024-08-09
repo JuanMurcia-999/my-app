@@ -22,7 +22,7 @@ function App() {
                 <Routes>
                   <Route path={'/'} element={<Home />} />
 
-                  <Route path={'/detalles/:Ip/:Id/:Host'} element={<Detalle />} />
+                  <Route path={'/detalles/:Ip/:Id/:Host/:type'} element={<Detalle />} />
                 </Routes>
               </main>
             </div>

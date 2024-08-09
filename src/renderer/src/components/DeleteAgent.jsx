@@ -7,9 +7,9 @@ import { useHomeContext } from '../contexts/HomeProvaider'
 import ComAviso from './Aviso'
 
 const Columns = {
-  ID_agent: 'ID agent',
-  Hostname: 'Hostname',
-  IP_address: 'IP address'
+  id_agent: 'ID agente',
+  ag_name: 'nombre',
+  ip_address: 'IP'
 }
 
 export default function ComModalDeleteAgent() {
@@ -42,9 +42,9 @@ export default function ComModalDeleteAgent() {
         <Modal.Body>
           <div class="space-y-6">
             <Dropdown label={selectedValue} dismissOnClick={true}>
-              <Dropdown.Item onClick={() => handleSelect('ID agent')}>ID agent</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleSelect('Host name')}>Hostname</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleSelect('IP')}>IP address</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('ID')}>ID agente</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('name')}>Nombre</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('IP')}>IP</Dropdown.Item>
             </Dropdown>
 
             <TextInput

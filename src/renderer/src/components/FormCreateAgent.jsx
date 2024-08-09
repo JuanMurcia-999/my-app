@@ -2,14 +2,17 @@ import { Button, Label, Modal, TextInput } from 'flowbite-react'
 import { useState } from 'react'
 import { Createagent } from '../services/create-agents'
 import { useHomeContext } from '../contexts/HomeProvaider'
+import { Dropdown } from 'flowbite-react'
 
 let BodyAgent = {
-  Hostname: '',
-  IP_address: ''
+  ag_name: '',
+  ip_address: '',
+  ag_type:''
 }
 
 export default function ComFormCreateAgent() {
   const [openModalCreate, setOpenModalCreate] = useState(false)
+  const [selectedtype, setSelectedType] = useState('Tipo')
 
   const [Hostname, setHostname] = useState()
   const [IP, setIp] = useState()
@@ -24,19 +27,24 @@ export default function ComFormCreateAgent() {
     setReloadAgents(true)
   }
 
+  const handleSelect = (value) => {
+    setSelectedType(value)
+  }
+
   const handleChangeDos = (e) => {
     const { name, value } = e.target
 
     setBodyAgent((prevBody) => ({
       ...prevBody,
-      [name]: value
+      [name]: value,
+      ag_type: selectedtype
     }))
   }
 
   return (
     <>
       <button class="flex-1 whitespace-nowrap px-3" onClick={() => setOpenModalCreate(true)}>
-        Nuevo agente{' '}
+        Nuevo agente
       </button>
       <Modal
         show={openModalCreate}
@@ -47,22 +55,27 @@ export default function ComFormCreateAgent() {
         popup
       >
         <Modal.Header />
+
         <Modal.Body>
           <div class="space-y-6">
             <h3 class="text-xl font-medium text-gray-900 dark:text-white">
               Registrar un nuevo Agente
             </h3>
+                    <Dropdown label={selectedtype} dismissOnClick={true}>
+              <Dropdown.Item onClick={() => handleSelect('2')}>PC</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('3')}>Router cisco</Dropdown.Item>
+            </Dropdown>
             <div>
               <div class="mb-2 block">
                 <Label htmlFor="Hostname" value="Hostname" />
               </div>
-              <TextInput name="Hostname" type="text" required onChange={handleChangeDos} />
+              <TextInput name="ag_name" type="text" required onChange={handleChangeDos} />
             </div>
             <div>
               <div class="mb-2 block">
                 <Label htmlFor="password" value="IP Address" />
               </div>
-              <TextInput name="IP_address" type="text" required onChange={handleChangeDos} />
+              <TextInput name="ip_address" type="text" required onChange={handleChangeDos} />
             </div>
 
             <div class="w-full">

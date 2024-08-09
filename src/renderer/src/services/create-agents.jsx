@@ -1,6 +1,7 @@
 import { toast, Toaster} from 'sonner';
 
 export function Createagent(Body) {
+  console.log(Body)
   const apiURL = '/api/agents/create/'
   console.log('serv createagent')
   fetch(apiURL, {

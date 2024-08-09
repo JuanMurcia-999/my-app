@@ -1,10 +1,12 @@
 const fromApiResponsetoagent = (apiresponse) => {
   if (Array.isArray(apiresponse)) {
-    const angentes = apiresponse.map((agente) => {
-      const { Hostname, ID_agent, IP_address } = agente
-      return { Hostname, ID_agent, IP_address }
+    const agentes = apiresponse.map((agente) => {
+      const { ag_name, id_agent, ip_address, type } = agente
+      
+      return {  ag_name, id_agent, ip_address, type }
     })
-    return angentes
+    console.log(agentes)
+    return agentes
   }
   return []
 }

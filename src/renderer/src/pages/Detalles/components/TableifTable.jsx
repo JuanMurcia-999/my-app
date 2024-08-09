@@ -1,5 +1,7 @@
 import { Table } from 'flowbite-react'
 import { Link } from 'react-router-dom'
+import { Button } from 'flowbite-react'
+import { IoMdAddCircleOutline } from 'react-icons/io'
 
 const columns = [
   'ifAdminStatus',
@@ -30,8 +32,9 @@ export default function TableIftable({ interfaces }) {
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell>ifDescr</Table.HeadCell>
-            <Table.HeadCell>ifInOctets</Table.HeadCell>
-            <Table.HeadCell>ifAdminStatus</Table.HeadCell>
+            <Table.HeadCell>ifPhysAddress</Table.HeadCell>
+            <Table.HeadCell>ifOutOctets</Table.HeadCell>
+            <Table.HeadCell>+ Sensor</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
             {interfaces.map((inter) => (
@@ -42,8 +45,14 @@ export default function TableIftable({ interfaces }) {
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   {inter.ifDescr}
                 </Table.Cell>
-                <Table.Cell>{inter.ifInOctets}</Table.Cell>
-                <Table.Cell>{inter.ifAdminStatus}</Table.Cell>
+                <Table.Cell>{inter.ifPhysAddress}</Table.Cell>
+                <Table.Cell>{inter.ifOutOctets}</Table.Cell>
+                <Table.Cell>
+                  {' '}
+                  <Button className=" w-[4rem] ml-[10px]">
+                    <IoMdAddCircleOutline className="h-5 w-[20px]" />
+                  </Button>
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

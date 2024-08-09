@@ -1,6 +1,8 @@
 import SimpleBarChart from "./typeGraphics"
 import SimpleAreaChart from "./typeArea"
 import SimpleDonutChart from "./typeDona"
+
+
 export default function Graphics(){
 
 
