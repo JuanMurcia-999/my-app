@@ -7,21 +7,26 @@ import Graphics from '../components/Graphics'
 
 export function ViewSensors({ infoAgent }) {
   const [featuresAgent, setFeaturesAgent] = useState([])
-  const { reloadFeatures, setReloadFeatures } = useDetallesConext()
+  const { reloadFeatures, setReloadFeatures,datesGraf} = useDetallesConext()
+
+  
   useEffect(() => {
     console.log('efec sensores individuales')
-    Get_FeaturesAgent(infoAgent.Ip).then((datos) => setFeaturesAgent(datos))
+    Get_FeaturesAgent(infoAgent.Id).then((datos) => setFeaturesAgent(datos))
     setReloadFeatures(false)
   }, [reloadFeatures])
+
+  console.log(datesGraf)
 
   return (
     <>
       <div className="h-dvh overflow-y-scroll">
-        <Graphics />
-        <div className="  pt-2  m-[10px] bg-lime-500 dark:bg-gray-700 h-dvh">
+        <Graphics data={datesGraf}/>
+        <div className="pt-2  m-[10px] bg-lime-500 dark:bg-gray-700 h-dvh">
           <ComAddSesnor infoagent={infoAgent} />
           <ComTableFeatures features={featuresAgent} reload={setReloadFeatures} />
         </div>
+        
       </div>
     </>
   )

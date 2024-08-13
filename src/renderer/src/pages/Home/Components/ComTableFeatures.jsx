@@ -4,20 +4,39 @@ import DeleteSensor from '../../../services/Delete-sensor'
 import { ImStatsBars } from 'react-icons/im'
 import { Get_history_sensor } from '../../../services/get-history-sensor'
 import { useState } from 'react'
+import Graphics from '../../Detalles/components/Graphics'
+import { useDetallesConext } from '../../../contexts/DetallesProvaider'
+
 
 export default function ComTableFeatures({ features, reload }) {
-  const [cosas, setCosas] = useState()
+  const [datos, setDatos] = useState({value:[], created_at:[]})
+  const {datesGraf,setDatesgraf} = useDetallesConext()
 
   const handleClick = (ID) => {
     DeleteSensor(ID)
     reload(true)
   }
-  const handleClickDos = () => {
-    Get_history_sensor().then((datos) => setCosas(datos))
+  const handleClickDos = ({ id_adminis, id_agent }) => {
+    Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent }).then((datos) =>
+      setDatesgraf(datos)
+    )
   }
+
+ 
+  function transformData(response) {
+    return response.value.map((value, index) => ({
+      created_at: response.created_at[index],
+      value: parseInt(value, 10) 
+    }));
+  }
+
+
+  const data = transformData(datesGraf);
 
   return (
     <>
+     
+
       <div className="overflow-y-auto h-[20rem] m-12">
         <Table hoverable>
           <Table.Head>
@@ -43,7 +62,7 @@ export default function ComTableFeatures({ features, reload }) {
                 <Table.Cell>{feature.agent.ip_address} </Table.Cell>
                 <Table.Cell
                   onClick={() => {
-                    handleClick(feature.id_feature)
+                    handleClick(feature.id_adminis)
                   }}
                 >
                   {' '}
@@ -51,7 +70,10 @@ export default function ComTableFeatures({ features, reload }) {
                 </Table.Cell>
                 <Table.Cell
                   onClick={() => {
-                    handleClickDos()
+                    handleClickDos({
+                      id_adminis: feature.id_adminis,
+                      id_agent: feature.agent.id_agent
+                    })
                   }}
                 >
                   <ImStatsBars />

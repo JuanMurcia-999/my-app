@@ -7,8 +7,7 @@ import { DetallesProvaider } from '../../contexts/DetallesProvaider'
 import { useParams } from 'react-router'
 
 export default function Detalles() {
-  let agent = useParams()
-
+  const  agent = useParams()
   return (
     <>
       <div className="flex flex-col z-20 pt-2 mt-[2rem] mr-[10px]  bg-emerald-200  dark:bg-gray-700  ">

@@ -1,20 +1,12 @@
-import SimpleBarChart from "./typeGraphics"
-import SimpleAreaChart from "./typeArea"
-import SimpleDonutChart from "./typeDona"
+import SimpleAreaChart from './typeArea'
 
+export default function Graphics({ data }) {
 
-export default function Graphics(){
-
-
-return(
-<>
-<div className=' flex bg-cyan-400 m-[10px] dark:bg-gray-700'>
-
-    <SimpleDonutChart/>
-  
- </div>
-</>
-)
-
-
+  return (
+    <>
+      <div className=" flex  justify-center bg-cyan-400 m-[10px] dark:bg-gray-700">
+        <SimpleAreaChart data={data} />
+      </div>
+    </>
+  )
 }

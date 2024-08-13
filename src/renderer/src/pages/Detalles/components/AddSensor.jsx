@@ -18,6 +18,7 @@ export default function ComAddSesnor({ infoagent }) {
   const [bodySensor, setBodySensor] = useState()
   const {reloadFeatures, setReloadFeatures} = useDetallesConext()
 
+  console.log()
   const handleSubmit = (event) => {
     event.preventDefault()
     setAddSesnor(false)
@@ -63,9 +64,9 @@ export default function ComAddSesnor({ infoagent }) {
             </div>
             <div>
               <div class="mb-2 block">
-                <Label htmlFor="description" value="description" />
+                <Label htmlFor="adminis_name" value="Nombre de la caracteristica" />
               </div>
-              <TextInput name="description" type="text" required onChange={handleChangeDos} />
+              <TextInput name="adminis_name" type="text" required onChange={handleChangeDos} />
             </div>
             <div>
               <div class="mb-2 block">

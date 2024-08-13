@@ -8,7 +8,7 @@ export default function CardAgent({ ag_name, ip, type }) {
         {ag_name}
       </h5>
       <p className="font-normal text-gray-700 dark:text-gray-400"> IP:  {ip} </p>
-      <p className="flex font-normal text-gray-700 dark:text-gray-400"> Tipo:  {type.type_name}</p>
+      <p className="flex font-normal text-gray-700 dark:text-gray-400"> Tipo:  {type}</p>
     </Card>
   )
 }

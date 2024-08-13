@@ -1,16 +1,18 @@
 const fromApiResponsehistory = (apiresponse) => {
+  console.log(apiresponse)
   const { value, created_at } = apiresponse
-  return [ value, created_at ]
+  return { value, created_at }
 }
 
-let Body = {
-  oid: '1.3.6.1.2.1.2.2.1.10.12',
-  ip_agent: '192.168.20.25'
-}
 
-export async function Get_history_sensor() {
+export async function Get_history_sensor({id_agent,id_adminis}) {
   const apiURL = '/api/history/sensor/'
 
+  let Body = {
+    id_adminis:id_adminis,
+    id_agent: id_agent
+  }
+  
   console.log('serv AllFeatures')
   const res = await fetch(apiURL, {
     method: 'POST',
@@ -20,5 +22,5 @@ export async function Get_history_sensor() {
     }
   })
   const datos = await res.json()
-  return fromApiResponsehistory(datos)
+  return datos
 }

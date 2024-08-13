@@ -1,15 +1,12 @@
 import { Sidebar } from 'flowbite-react'
-import { HiChartPie} from 'react-icons/hi'
+import { HiChartPie } from 'react-icons/hi'
 import { MdMonitorHeart } from 'react-icons/md'
 import { BsFillFileTextFill } from 'react-icons/bs'
 import ComFormCreateAgent from './FormCreateAgent'
 import { Link } from 'react-router-dom'
 import ComModalDeleteAgent from './DeleteAgent'
 
-
-
 export default function ComSidebar() {
-  
   console.log('cargando Sidebar')
 
   return (
@@ -30,9 +27,7 @@ export default function ComSidebar() {
               <Sidebar.Item href="#">
                 <ComFormCreateAgent />
               </Sidebar.Item>
-              <Link to="/detalles">
-                <Sidebar.Item href="#">Todos los detalles</Sidebar.Item>
-              </Link>
+
               <Sidebar.Item href="#">
                 <ComModalDeleteAgent />
               </Sidebar.Item>

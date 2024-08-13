@@ -1,10 +1,10 @@
 const fromApiResponsetofeature = (apiresponse) => {
   if (Array.isArray(apiresponse)) {
     const features = apiresponse.map((feature) => {
-      const { id_agent, ip_agent, oid, description, timer, id_feature } = feature
-      return { id_agent, ip_agent, oid, description, timer, id_feature }
+      const {  id_agent, oid, adminis_name, timer, id_adminis ,agent} = feature
+      return {  id_agent, oid, adminis_name, timer, id_adminis, agent }
     })
-
+    console.log(features)
     return features
   }
   return []

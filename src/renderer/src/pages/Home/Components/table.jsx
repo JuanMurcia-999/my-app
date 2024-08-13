@@ -21,14 +21,14 @@ export default function ComTable({agents}) {
         {
             agents.map(agent => 
               
-                <Table.Row key={agent.ID_agent} class="bg-white dark:border-gray-700 dark:bg-gray-800">
+                <Table.Row key={agent.id_agent} class="bg-white dark:border-gray-700 dark:bg-gray-800">
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {agent.Hostname}
+                  {agent.ag_name}
                 </Table.Cell>
-                <Table.Cell>{agent.IP_address}</Table.Cell>
-                <Table.Cell>{agent.ID_agent}</Table.Cell>
+                <Table.Cell>{agent.ip_address}</Table.Cell>
+                <Table.Cell>{agent.id_agent}</Table.Cell>
                 <Table.Cell>
-                  <Link to={`/detalles/${agent.IP_address}/${agent.ID_agent}/${agent.Hostname}/${agent.ag_type}`} class="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                  <Link to={`/detalles/${agent.ip_address}/${agent.id_agent}/${agent.ag_name}/${agent.type.id_type}`} class="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                     View
                   </Link>
                 </Table.Cell>

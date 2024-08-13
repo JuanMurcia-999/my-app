@@ -2,29 +2,59 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import Get_iftable from '../../../services/get-iftable'
 import TableIftable from '../components/TableifTable'
-import { Alldefaultsensor } from '../../../services/all-sensor-default'
-import Tabledefaultsensors from '../components/tableDefaultSensors'
+import { Availabletaskdefault, Activetaskdefault } from '../../../services/Default_task'
+import TabledefaultTasks from '../components/tableDefaultTasks'
+import { ModalInterfaces } from '../components/Modal-interfaces'
+import { useDetallesConext } from '../../../contexts/DetallesProvaider'
+
 
 export function ViewInfo() {
-  let { Ip, Id, Host ,type} = useParams()
+  let { Ip, Id, Host, type } = useParams()
   const [iftable, setIftable] = useState([])
-  const [defaultsensors, setDefaultsensors] = useState([])
+  const [availabletasks, setAvailabletasks] = useState([])
+  const [activetasks, setActivetasks] = useState([])
+  const {reloadActive, setReloadactive}= useDetallesConext()
 
   useEffect(() => {
     console.log('efect todos los sensores')
     Get_iftable(Ip).then((datos) => setIftable(datos))
-    Alldefaultsensor(type).then((datos)=> setDefaultsensors(datos))
-
   }, [])
- 
+
+  useEffect(() => {
+    console.error('activa')
+    Availabletaskdefault(type, Id).then((datos) => setAvailabletasks(datos))
+    Activetaskdefault(type, Id).then((datos) => setActivetasks(datos))
+    setReloadactive(false)
+
+  }, [reloadActive])
+
 
   return (
     <>
-      <div className="flex flex-col z-20  m-[10px] h-[100vh] bg-pink-700  dark:bg-gray-700">
-        <span class="self-center whitespace-nowrap bg-slate-800 w-[98%] text-xl font-semibold dark:text-white"> Interfaces</span>
-        <TableIftable interfaces={iftable} />
-        <span class="self-center whitespace-nowrap bg-slate-800 w-[98%] text-xl font-semibold dark:text-white">Sensores disponibles</span>
-        <Tabledefaultsensors Sensors={defaultsensors} />
+      <div className="h-dvh overflow-y-scroll">
+        <span class="self-center whitespace-nowrap bg-slate-800 w-[98%] text-xl font-semibold dark:text-white">
+          Interfaces
+        </span>
+        <div className="">
+          <ModalInterfaces />
+          <TableIftable interfaces={iftable} />
+        </div>
+
+        <span class="self-center whitespace-nowrap bg-slate-800 w-[98%] text-xl font-semibold dark:text-white">
+          Sensores disponibles
+        </span>
+        <div className=" flex justify-center pt-2  m-[10px] bg-lime-500 dark:bg-gray-700 h-dvh">
+          <TabledefaultTasks
+            Sensors={availabletasks}
+            Mode={true}
+            infoAgent={{ Ip, Id, Host, type }}
+          />
+          <TabledefaultTasks
+            Sensors={activetasks}
+            Mode={false}
+            infoAgent={{ Ip, Id, Host, type }}
+          />
+        </div>
       </div>
     </>
   )
