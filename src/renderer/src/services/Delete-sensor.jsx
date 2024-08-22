@@ -1,9 +1,8 @@
 import { toast, Toaster} from 'sonner';
 
-export default function DeleteSensor(value) {
-  console.log(value)
-  const apiURL = `/api/features/delete/id_adminis?value=${value}`;
-  console.log('serv deleteAgent')
+export default function DeleteSensor(Id,name) {
+  const apiURL = `/api/features/delete/?id=${Id}&nametask=${name}`;
+  
   fetch(apiURL, {
     method: 'DELETE',
     headers: {

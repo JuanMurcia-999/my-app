@@ -4,21 +4,17 @@
 @tailwind utilities;
 
 
-@media (max-width: 720px) {
-  .text {
-    font-size: 20px;
-  }
-}
 
-@media (max-width: 620px) {
-  .versions {
+
+
+.scrollbar-hide {
+  /* Ocultar la barra de desplazamiento en todos los navegadores */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  /* Ocultar la barra de desplazamiento en WebKit */
+  &::-webkit-scrollbar {
     display: none;
   }
 }
 
-@media (max-width: 350px) {
-  .tip,
-  .actions {
-    display: none;
-  }
-}

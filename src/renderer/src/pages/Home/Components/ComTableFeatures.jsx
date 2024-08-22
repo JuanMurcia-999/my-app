@@ -1,51 +1,37 @@
-import { Table } from 'flowbite-react'
+import { Table, TableCell } from 'flowbite-react'
 import { MdOutlineDelete } from 'react-icons/md'
 import DeleteSensor from '../../../services/Delete-sensor'
 import { ImStatsBars } from 'react-icons/im'
 import { Get_history_sensor } from '../../../services/get-history-sensor'
 import { useState } from 'react'
-import Graphics from '../../Detalles/components/Graphics'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
+import { ModalAlarms } from '../../Detalles/components/Modal-alarm'
 
-
-export default function ComTableFeatures({ features, reload }) {
-  const [datos, setDatos] = useState({value:[], created_at:[]})
-  const {datesGraf,setDatesgraf} = useDetallesConext()
+export default function ComTableFeatures({ features, reload, infoagent }) {
+  const { setDatesgraf } = useDetallesConext()
+  const [datos, setDatos] = useState({ value: [], created_at: [] })
 
   const handleClick = (ID) => {
-    DeleteSensor(ID)
+    DeleteSensor(ID, infoagent.Host)
     reload(true)
   }
-  const handleClickDos = ({ id_adminis, id_agent }) => {
-    Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent }).then((datos) =>
-      setDatesgraf(datos)
+  const handleClickDos = ({ id_adminis, id_agent, id_sensor }) => {
+    Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent, id_sensor: id_sensor }).then(
+      (datos) => setDatesgraf(datos)
     )
   }
 
- 
-  function transformData(response) {
-    return response.value.map((value, index) => ({
-      created_at: response.created_at[index],
-      value: parseInt(value, 10) 
-    }));
-  }
-
-
-  const data = transformData(datesGraf);
-
   return (
     <>
-     
-
-      <div className="overflow-y-auto h-[20rem] m-12">
+      <div className="overflow-y-auto h-[20rem] m-12  flex justify-center">
         <Table hoverable>
           <Table.Head>
-            <Table.HeadCell>agente</Table.HeadCell>
             <Table.HeadCell>OID</Table.HeadCell>
             <Table.HeadCell>Nombre sensor</Table.HeadCell>
             <Table.HeadCell>Timer</Table.HeadCell>
-            <Table.HeadCell>ID sensor</Table.HeadCell>
-            <Table.HeadCell></Table.HeadCell>
+            <Table.HeadCell>Delete</Table.HeadCell>
+            <Table.HeadCell>Ver</Table.HeadCell>
+            <Table.HeadCell>Alrma</Table.HeadCell>
           </Table.Head>
           <Table.Body class="divide-y">
             {features.map((feature) => (
@@ -53,31 +39,35 @@ export default function ComTableFeatures({ features, reload }) {
                 key={feature.id_adminis}
                 class="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
-                <Table.Cell className="font-medium text-gray-900 dark:text-white">
-                  {feature.agent.ag_name}
-                </Table.Cell>
                 <Table.Cell>{feature.oid}</Table.Cell>
                 <Table.Cell>{feature.adminis_name} </Table.Cell>
                 <Table.Cell>{feature.timer}</Table.Cell>
-                <Table.Cell>{feature.agent.ip_address} </Table.Cell>
-                <Table.Cell
-                  onClick={() => {
-                    handleClick(feature.id_adminis)
-                  }}
-                >
-                  {' '}
-                  <MdOutlineDelete />{' '}
-                </Table.Cell>
+                {feature.oid ? (
+                  <Table.Cell
+                    onClick={() => {
+                      handleClick(feature.id_adminis)
+                    }}
+                  >
+                    <MdOutlineDelete />
+                  </Table.Cell>
+                ) : (
+                  <Table.Cell></Table.Cell>
+                )}
                 <Table.Cell
                   onClick={() => {
                     handleClickDos({
                       id_adminis: feature.id_adminis,
+                      id_sensor: feature.id_sensor,
                       id_agent: feature.agent.id_agent
                     })
                   }}
                 >
                   <ImStatsBars />
                 </Table.Cell>
+
+                <TableCell>
+                  <ModalAlarms infoagent={infoagent} infosensor={feature}/>
+                </TableCell>
               </Table.Row>
             ))}
           </Table.Body>

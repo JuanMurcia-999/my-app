@@ -8,7 +8,7 @@ import { ModalInterfaces } from '../components/Modal-interfaces'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
 
-export function ViewInfo() {
+export function ViewInfo({infoAgent}) {
   let { Ip, Id, Host, type } = useParams()
   const [iftable, setIftable] = useState([])
   const [availabletasks, setAvailabletasks] = useState([])
@@ -31,19 +31,20 @@ export function ViewInfo() {
 
   return (
     <>
-      <div className="h-dvh overflow-y-scroll">
-        <span class="self-center whitespace-nowrap bg-slate-800 w-[98%] text-xl font-semibold dark:text-white">
+      <div className="h-dvh overflow-y-scroll scrollbar-hide">
+        <span class="self-center whitespace-nowrap bg-slate-100w-[98%] text-xl font-semibold dark:text-white">
           Interfaces
         </span>
         <div className="">
-          <ModalInterfaces />
+          <ModalInterfaces infoagent={infoAgent} />
+          
           <TableIftable interfaces={iftable} />
         </div>
 
-        <span class="self-center whitespace-nowrap bg-slate-800 w-[98%] text-xl font-semibold dark:text-white">
+        <span class="self-center whitespace-nowrap bg-slate-100w-[98%] text-xl font-semibold dark:text-white">
           Sensores disponibles
         </span>
-        <div className=" flex justify-center pt-2  m-[10px] bg-lime-500 dark:bg-gray-700 h-dvh">
+        <div className=" flex justify-center pt-2  m-[10px] bg-slate-100 dark:bg-gray-700 h-dvh">
           <TabledefaultTasks
             Sensors={availabletasks}
             Mode={true}

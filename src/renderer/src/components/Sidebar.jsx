@@ -18,7 +18,7 @@ export default function ComSidebar() {
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             <Link to="/">
-              <Sidebar.Item href="#" icon={HiChartPie}>
+              <Sidebar.Item icon={HiChartPie}>
                 Dashboard
               </Sidebar.Item>
             </Link>

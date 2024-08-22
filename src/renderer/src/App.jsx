@@ -17,7 +17,7 @@ function App() {
             <ComNavbar />
             <ComSidebar />
 
-            <div className="lg:pl-[18rem]  mt-[4.7rem] fixed  w-full h-[100vh] bg-amber-300 dark:bg-gray-700  scroll-auto">
+            <div className="lg:pl-[18rem]  mt-[4.7rem] fixed  w-full h-[100vh] bg-slate-100 dark:bg-gray-700  scroll-auto">
               <main>
                 <Routes>
                   <Route path={'/'} element={<Home />} />

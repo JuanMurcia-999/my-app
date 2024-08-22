@@ -12,6 +12,7 @@ const Columns = {
   ip_address: 'IP'
 }
 
+
 export default function ComModalDeleteAgent() {
   const [openModalDelete, setOpenModalDelete] = useState(false)
   const [selectedValue, setSelectedValue] = useState('Buscar por')

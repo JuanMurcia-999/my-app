@@ -5,13 +5,15 @@ const fromApiResponsehistory = (apiresponse) => {
 }
 
 
-export async function Get_history_sensor({id_agent,id_adminis}) {
+export async function Get_history_sensor({id_agent,id_adminis,id_sensor}) {
   const apiURL = '/api/history/sensor/'
 
   let Body = {
     id_adminis:id_adminis,
+    id_sensor :id_sensor,
     id_agent: id_agent
-  }
+  } 
+  console.log(Body)
   
   console.log('serv AllFeatures')
   const res = await fetch(apiURL, {

@@ -7,7 +7,7 @@ import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
 let BodySensor = {
   ID: '',
-  Ip: '',
+  ag_name:'',
   oid: '',
   description: '',
   interval: ''
@@ -18,11 +18,12 @@ export default function ComAddSesnor({ infoagent }) {
   const [bodySensor, setBodySensor] = useState()
   const {reloadFeatures, setReloadFeatures} = useDetallesConext()
 
-  console.log()
+  console.log(infoagent.Host)
   const handleSubmit = (event) => {
     event.preventDefault()
     setAddSesnor(false)
     AddSesnor(bodySensor)
+    console.log(bodySensor)
     setReloadFeatures(true)
   }
 
@@ -30,8 +31,10 @@ export default function ComAddSesnor({ infoagent }) {
     const { name, value } = e.target
     setBodySensor((prevBodyAgent) => ({
       ...prevBodyAgent,
-      ['id_agent']:  infoagent.Id,
-      ['ip_agent']:  infoagent.Ip,
+      id_agent:  infoagent.Id,
+      ag_name: infoagent.Host,
+      id_adminis: null, 
+      id_sensor: null,
       [name]: value
      
     }))

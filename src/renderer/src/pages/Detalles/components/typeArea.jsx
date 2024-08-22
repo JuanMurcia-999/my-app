@@ -8,7 +8,7 @@ const SimpleAreaChart = ({ data, width = 1500, height = 400, margin = { top: 10,
     data={data}
     margin={margin}
   >
-    <CartesianGrid fill="red" fillOpacity={0.6}   strokeDasharray="4 1 2" />
+    <CartesianGrid fillOpacity={0.6}   strokeDasharray="4 1 2" />
     <XAxis dataKey="created_at"  tick={{stroke: 'red', strokeWidth: 1}} />
     <YAxis  />
     <Tooltip />

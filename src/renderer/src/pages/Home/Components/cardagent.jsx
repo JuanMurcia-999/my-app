@@ -3,7 +3,7 @@ import { Button } from 'flowbite-react'
 
 export default function CardAgent({ ag_name, ip, type }) {
   return (
-    <Card href="#" className="max-w-sm">
+    <Card href="#" className="w-[]">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {ag_name}
       </h5>
