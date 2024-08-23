@@ -10,28 +10,39 @@ export function Enable_task(Body) {
       'Content-type': 'application/json; charset=UTF-8'
     }
   })
-    .then((response) => response.json())
-    .then(toast.success('sensor activado'))
+    .then((response) => {
+      if (response.ok) {
+        response.json()
+        toast.success('Sensor agregado')
+      } else {
+        toast.error('No es posible agregar el sensor')
+      }
+    })
     .catch((error) => {
       toast.error('No es posible activar el sensor')
     })
 }
 
 export function Disable_task(Body) {
-  console.log(Body)
-    const apiURL = '/api/task/stop/'
-    console.log('serv DisableTask')
-    fetch(apiURL, {
-      method: 'POST',
-      body: JSON.stringify(Body),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
+  const apiURL = '/api/task/stop/'
+  console.log('serv DisableTask')
+  fetch(apiURL, {
+    method: 'POST',
+    body: JSON.stringify(Body),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  })
+    .then((response) => {
+      if (response.ok) {
+        response.json()
+        toast.success('Sensor desactivado')
+      } else {
+        toast.error('No es posible desactivar el sensor')
       }
     })
-      .then((response) => response.json())
-      .then(toast.success('Tarea desactivada'))
-      .catch((error) => {
-        toast.error('No es posible desactivar la tarea')
-      })
-  }
-  
+
+    .catch((error) => {
+      toast.error('No es posible desactivar la tarea')
+    })
+}

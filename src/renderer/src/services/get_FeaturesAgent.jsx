@@ -4,7 +4,7 @@ const fromApiResponsetofeature = (apiresponse) => {
       const {  id_agent, oid, adminis_name, timer, id_adminis,id_sensor ,agent} = feature
       return {  id_agent, oid, adminis_name, timer, id_adminis,id_sensor, agent }
     })
-    console.log(features)
+
     return features
   }
   return []

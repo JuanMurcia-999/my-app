@@ -11,7 +11,8 @@ export function DetallesProvaider(props) {
   const [reloadFeatures, setReloadFeatures] = useState(false)
   const [infoAgent, setInfoAgent] = useState([])
   const [reloadActive, setReloadactive] = useState(false)
-  const [datesGraf, setDatesgraf] = useState([{ created_at: '2024-08-12', value: 0 }])
+  const [datesGraf, setDatesgraf] = useState([{ created_at: '', value: 0 }])
+  const [reloadalarms, setReloadalarms] = useState(false)
 
   const contextutilities = {
     openAddSesnor,
@@ -23,7 +24,9 @@ export function DetallesProvaider(props) {
     reloadActive,
     setReloadactive,
     datesGraf,
-    setDatesgraf
+    setDatesgraf,
+    reloadalarms,
+    setReloadalarms
   }
 
   return (

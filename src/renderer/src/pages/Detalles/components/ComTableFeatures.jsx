@@ -5,15 +5,16 @@ import { ImStatsBars } from 'react-icons/im'
 import { Get_history_sensor } from '../../../services/get-history-sensor'
 import { useState } from 'react'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
-import { ModalAlarms } from '../../Detalles/components/Modal-alarm'
+import { ModalAlarms } from './Modal-alarm'
 
-export default function ComTableFeatures({ features, reload, infoagent }) {
-  const { setDatesgraf } = useDetallesConext()
+export default function ComTableFeatures({ features, infoagent }) {
+  const { setDatesgraf,reloadFeatures, setReloadFeatures } = useDetallesConext()
   const [datos, setDatos] = useState({ value: [], created_at: [] })
 
   const handleClick = (ID) => {
     DeleteSensor(ID, infoagent.Host)
-    reload(true)
+    setReloadFeatures(!reloadFeatures)
+    setDatesgraf([])
   }
   const handleClickDos = ({ id_adminis, id_agent, id_sensor }) => {
     Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent, id_sensor: id_sensor }).then(
@@ -26,6 +27,7 @@ export default function ComTableFeatures({ features, reload, infoagent }) {
       <div className="overflow-y-auto h-[20rem] m-12  flex justify-center">
         <Table hoverable>
           <Table.Head>
+            <Table.HeadCell>ID</Table.HeadCell>
             <Table.HeadCell>OID</Table.HeadCell>
             <Table.HeadCell>Nombre sensor</Table.HeadCell>
             <Table.HeadCell>Timer</Table.HeadCell>
@@ -39,6 +41,9 @@ export default function ComTableFeatures({ features, reload, infoagent }) {
                 key={feature.id_adminis}
                 class="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
+                <Table.Cell>
+                  {feature.id_sensor ? feature.id_sensor : feature.id_adminis}
+                </Table.Cell>
                 <Table.Cell>{feature.oid}</Table.Cell>
                 <Table.Cell>{feature.adminis_name} </Table.Cell>
                 <Table.Cell>{feature.timer}</Table.Cell>
@@ -66,7 +71,7 @@ export default function ComTableFeatures({ features, reload, infoagent }) {
                 </Table.Cell>
 
                 <TableCell>
-                  <ModalAlarms infoagent={infoagent} infosensor={feature}/>
+                  <ModalAlarms infoagent={infoagent} infosensor={feature} />
                 </TableCell>
               </Table.Row>
             ))}

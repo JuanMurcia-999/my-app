@@ -13,7 +13,7 @@ export function ViewInfo({infoAgent}) {
   const [iftable, setIftable] = useState([])
   const [availabletasks, setAvailabletasks] = useState([])
   const [activetasks, setActivetasks] = useState([])
-  const {reloadActive, setReloadactive}= useDetallesConext()
+  const {reloadActive}= useDetallesConext()
 
   useEffect(() => {
     console.log('efect todos los sensores')
@@ -21,11 +21,8 @@ export function ViewInfo({infoAgent}) {
   }, [])
 
   useEffect(() => {
-    console.error('activa')
     Availabletaskdefault(type, Id).then((datos) => setAvailabletasks(datos))
     Activetaskdefault(type, Id).then((datos) => setActivetasks(datos))
-    setReloadactive(false)
-
   }, [reloadActive])
 
 

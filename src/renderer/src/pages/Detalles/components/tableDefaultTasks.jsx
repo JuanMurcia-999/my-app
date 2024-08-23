@@ -12,7 +12,7 @@ let Body = {
 }
 
 export default function TabledefaultTasks({ Sensors, Mode, infoAgent }) {
-  const { reloadActive, setReloadactive } = useDetallesConext()
+  const { reloadActive, setReloadactive ,reloadFeatures, setReloadFeatures } = useDetallesConext()
 
   const handleClick = (sensor,id_feature) => {
     Body.name = infoAgent.Host
@@ -26,10 +26,12 @@ export default function TabledefaultTasks({ Sensors, Mode, infoAgent }) {
 
     if (Mode) {
       Enable_task(Body)
-      setReloadactive(true)
+      setReloadactive(!reloadActive)
+      setReloadFeatures(!reloadFeatures)
     } else {
       Disable_task(Body)
-      setReloadactive(true)
+      setReloadactive(!reloadActive)
+      setReloadFeatures(!reloadFeatures)
     }
   }
 

@@ -13,7 +13,6 @@ export async function Get_history_sensor({id_agent,id_adminis,id_sensor}) {
     id_sensor :id_sensor,
     id_agent: id_agent
   } 
-  console.log(Body)
   
   console.log('serv AllFeatures')
   const res = await fetch(apiURL, {

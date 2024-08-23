@@ -19,6 +19,6 @@ export default async function Get_iftable(Ip) {
     const datos = await res.json()
     return fromApiResponseToInterfaces(datos)
   } catch (err) {
-    toast.success('Agente desconectado')
+    toast.error('Agente desconectado')
   }
 }

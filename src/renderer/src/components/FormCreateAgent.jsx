@@ -1,8 +1,8 @@
 import { Button, Label, Modal, TextInput } from 'flowbite-react'
 import { useState } from 'react'
-import { Createagent } from '../services/create-agents'
 import { useHomeContext } from '../contexts/HomeProvaider'
 import { Dropdown } from 'flowbite-react'
+import { Addagent } from '../services/Create-agent'
 
 let BodyAgent = {
   ag_name: '',
@@ -12,10 +12,8 @@ let BodyAgent = {
 
 export default function ComFormCreateAgent() {
   const [openModalCreate, setOpenModalCreate] = useState(false)
-  const [selectedtype, setSelectedType] = useState('Tipo')
-
-  const [Hostname, setHostname] = useState()
-  const [IP, setIp] = useState()
+  const [selectedtype, setSelectedType] = useState()
+  const [defaultt, setDefault] = useState('Tipo')
 
   const [bodyAgent, setBodyAgent] = useState(BodyAgent)
   const { reloadAgents, setReloadAgents } = useHomeContext()
@@ -23,12 +21,13 @@ export default function ComFormCreateAgent() {
   const handleSubmit = (event) => {
     event.preventDefault()
     setOpenModalCreate(false)
-    Createagent(bodyAgent)
-    setReloadAgents(true)
+    Addagent(bodyAgent)
+    setReloadAgents(!reloadAgents)
   }
 
-  const handleSelect = (value) => {
+  const handleSelect = (value,text) => {
     setSelectedType(value)
+    setDefault(text)
   }
 
   const handleChangeDos = (e) => {
@@ -61,9 +60,9 @@ export default function ComFormCreateAgent() {
             <h3 class="text-xl font-medium text-gray-900 dark:text-white">
               Registrar un nuevo Agente
             </h3>
-                    <Dropdown label={selectedtype} dismissOnClick={true}>
-              <Dropdown.Item onClick={() => handleSelect('2')}>PC</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleSelect('3')}>Router cisco</Dropdown.Item>
+                    <Dropdown label={defaultt} dismissOnClick={true}>
+              <Dropdown.Item onClick={() => handleSelect('2','PC')}>PC</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('3','Router')}>Router</Dropdown.Item>
             </Dropdown>
             <div>
               <div class="mb-2 block">

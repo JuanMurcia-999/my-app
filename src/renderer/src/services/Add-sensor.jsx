@@ -1,8 +1,6 @@
-import { toast} from 'sonner';
+import { toast } from 'sonner'
 
 export function AddSesnor(Body) {
-
-  
   const apiURL = '/api/agents/features/new/'
   console.log('serv addsensor')
   fetch(apiURL, {
@@ -12,12 +10,15 @@ export function AddSesnor(Body) {
       'Content-type': 'application/json; charset=UTF-8'
     }
   })
-    .then((response) => response.json())
-    .then(toast.success('Sensor agragado'))
-    .catch(error => {
-      toast.error('No es posible agregar el sensor')
-
+    .then((response) => {
+      if (response.ok) {
+        toast.success('Sensor agregado')
+        response.json()
+      }else{
+        toast.error('error al activar la tarea')
+      }
     })
-
-     
+    .catch((error) => {
+      toast.error('No es posible agregar el sensor')
+    })
 }

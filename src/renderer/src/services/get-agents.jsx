@@ -5,7 +5,7 @@ const fromApiResponsetoagent = (apiresponse) => {
       
       return {  ag_name, id_agent, ip_address, type }
     })
-    console.log(agentes)
+  
     return agentes
   }
   return []

@@ -1,21 +1,22 @@
 import { toast } from 'sonner'
 
-export function AddAlarm(Body) {
-  const apiURL = '/api/alarms/new/'
+export function DeleteAlarm(id_alarm) {
+  const apiURL = `/api/alarms/delete/?id=${id_alarm}`
   console.log('serv addsensor')
   fetch(apiURL, {
-    method: 'POST',
+    method: 'DDELETE',
     body: JSON.stringify(Body),
     headers: {
       'Content-type': 'application/json; charset=UTF-8'
     }
   })
     .then((response) => {
+      console.log(response)
       if (response.ok) {
-        toast.success('Alarma agragada')
+        toast.success('Alarma Eliminada')
       }
     })
     .catch((error) => {
-      toast.error('No es posible agregar la alarma')
+      toast.error('Eliminada o no exixte')
     })
 }

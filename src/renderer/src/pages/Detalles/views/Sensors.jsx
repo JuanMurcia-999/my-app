@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import ComAddSesnor from '../components/AddSensor'
 import Get_FeaturesAgent from '../../../services/get_FeaturesAgent'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
-import ComTableFeatures from '../../Home/Components/ComTableFeatures'
+import ComTableFeatures from '../components/ComTableFeatures'
 import Graphics from '../components/Graphics'
 import MyChart from '../components/Mychart'
 
@@ -13,7 +13,6 @@ export function ViewSensors({ infoAgent }) {
   useEffect(() => {
     console.log('efec sensores individuales')
     Get_FeaturesAgent(infoAgent.Id).then((datos) => setFeaturesAgent(datos))
-    setReloadFeatures(false)
   }, [reloadFeatures])
 
   return (
@@ -23,7 +22,7 @@ export function ViewSensors({ infoAgent }) {
 
         <MyChart labels={datesGraf.created_at} data={datesGraf.value} />
         <div className="pt-2  m-[10px] bg-slate-100 dark:bg-gray-700 h-dvh">
-          <ComTableFeatures features={featuresAgent} reload={setReloadFeatures} infoagent={infoAgent}/>
+          <ComTableFeatures features={featuresAgent} infoagent={infoAgent} />
         </div>
       </div>
     </>

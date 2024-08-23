@@ -31,7 +31,7 @@ export default function ComModalDeleteAgent() {
   const handleDelete = () => {
     Deleteagent(selectedValue, valudelete)
     setOpenModalDelete(false)
-    setReloadAgents(true)
+    setReloadAgents(!reloadAgents)
     setConfirmDelete(false)
   }
 

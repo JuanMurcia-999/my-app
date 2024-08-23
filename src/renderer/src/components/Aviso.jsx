@@ -1,17 +1,11 @@
 import { Button, Modal } from 'flowbite-react'
 import { useState} from 'react'
 import { HiOutlineExclamationCircle } from 'react-icons/hi'
-import { useHomeContext } from '../contexts/HomeProvaider'
 
 
 export default function ComAviso({action}) {
   const [openModal, setOpenModal] = useState(false)
-  const { confirmDelete, setConfirmDelete } = useHomeContext()
 
-
-
-  console.log(confirmDelete)
-  
   return (
     <>
       <Button onClick={() => setOpenModal(true)}>Eliminar</Button>

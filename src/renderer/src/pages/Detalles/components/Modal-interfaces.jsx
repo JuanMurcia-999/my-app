@@ -18,20 +18,18 @@ let Body = {
 export function ModalInterfaces({ infoagent }) {
   const [openModal, setOpenModal] = useState(false)
   const [bodyinterface, setBodyinterface] = useState(Body)
-  const { setReloadFeatures } = useDetallesConext()
+  const { reloadFeatures, setReloadFeatures } = useDetallesConext()
 
   const handleClick = (state) => {
     setOpenModal(false)
-  
+
     if (state) {
       Enable_task(bodyinterface)
-      console.log(bodyinterface)
-      setReloadFeatures(true)
+      setReloadFeatures(!reloadFeatures)
     } else {
       Disable_task(bodyinterface)
-      setReloadFeatures(true)
+      setReloadFeatures(!reloadFeatures)
     }
-    
   }
 
   const handleChangeDos = (e) => {

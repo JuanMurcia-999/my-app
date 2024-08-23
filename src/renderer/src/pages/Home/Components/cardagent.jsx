@@ -1,5 +1,5 @@
 import { Card } from 'flowbite-react'
-import { Button } from 'flowbite-react'
+
 
 export default function CardAgent({ ag_name, ip, type }) {
   return (

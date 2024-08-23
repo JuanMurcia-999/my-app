@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Chart } from 'chart.js/auto'
 
+
 export default function MyChart({ labels, data }) {
   let datasets = []
   const colors = [
@@ -71,8 +72,8 @@ export default function MyChart({ labels, data }) {
   }, [chartData])
 
   return (
-    <div className=" flex justify-center h-[50%]  dark:bg-cyan-800">
-      <canvas id="myChart" />
+    <div className=" flex justify-center h-[50%]  dark:bg-slate-200">
+      <canvas id="myChart"  />
     </div>
   )
 }

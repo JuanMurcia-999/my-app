@@ -4,7 +4,7 @@ import { Button } from 'flowbite-react'
 import { useParams } from 'react-router-dom'
 import { IoMdAddCircleOutline } from 'react-icons/io'
 
-export default function TableIftable({ interfaces }) {
+export default function TableIftable({ interfaces =[] }) {
   let agent = useParams()
   
   return (

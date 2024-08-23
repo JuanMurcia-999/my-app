@@ -2,6 +2,7 @@ import { Button, Modal, Label, TextInput, Dropdown } from 'flowbite-react'
 import { useState } from 'react'
 import { RiAlarmWarningLine } from 'react-icons/ri'
 import { AddAlarm } from '../../../services/add-alarm'
+import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
 let Body = {
   id_agent: 0,
@@ -17,6 +18,7 @@ export function ModalAlarms({ infoagent, infosensor }) {
   const [bodyalarms, setBodyalarms] = useState(Body)
   const [operation, setOperation] = useState()
   const [deftext, setDeftext] = useState('Comparacion')
+  const {reloadalarms, setReloadalarms}= useDetallesConext()
 
   const handleSelect = (ope, text) => {
     setOperation(ope)
@@ -24,10 +26,10 @@ export function ModalAlarms({ infoagent, infosensor }) {
   }
   const handleClick = (state) => {
     setOpenModal(false)
-
+    setReloadalarms(!reloadalarms)
     if (state) {
-      console.log(bodyalarms)
       AddAlarm(Body)
+
     } else {
       console.log(state)
     }

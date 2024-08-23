@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Detalle from './pages/Detalles/Detalle'
 import { Homeprovaider } from './contexts/HomeProvaider'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import WebSocketComponent from './pages/RealTime/Real_time'
 
 function App() {
   console.log('Cragdo APP')
@@ -21,7 +22,7 @@ function App() {
               <main>
                 <Routes>
                   <Route path={'/'} element={<Home />} />
-
+                  <Route path='/ws' element={<WebSocketComponent/>}/>
                   <Route path={'/detalles/:Ip/:Id/:Host/:type'} element={<Detalle />} />
                 </Routes>
               </main>

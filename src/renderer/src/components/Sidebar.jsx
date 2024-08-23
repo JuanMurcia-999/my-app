@@ -18,9 +18,7 @@ export default function ComSidebar() {
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             <Link to="/">
-              <Sidebar.Item icon={HiChartPie}>
-                Dashboard
-              </Sidebar.Item>
+              <Sidebar.Item icon={HiChartPie}>Dashboard</Sidebar.Item>
             </Link>
 
             <Sidebar.Collapse icon={MdMonitorHeart} label="Agentes ">
@@ -37,6 +35,10 @@ export default function ComSidebar() {
               <Sidebar.Item href="#">Subir Mib</Sidebar.Item>
               <Sidebar.Item href="#">Todas las MIB</Sidebar.Item>
             </Sidebar.Collapse>
+
+            <Link to="/ws">
+              <Sidebar.Item >Websocket</Sidebar.Item>
+            </Link>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>

@@ -10,9 +10,8 @@ const fromApiResponsedefault = (apiresponse) => {
   return []
 }
 
-export async function Availabletaskdefault(type,Id) {
+export async function Availabletaskdefault(type, Id) {
   const apiURL = `/api/features/default/agent/?id=${Id}&type=${type}`
-  console.log(type)
   console.log('serv AvailableTasks')
   const res = await fetch(apiURL, {
     method: 'GET',
@@ -24,10 +23,8 @@ export async function Availabletaskdefault(type,Id) {
   return fromApiResponsedefault(datos)
 }
 
-
-export async function Activetaskdefault(type,Id) {
+export async function Activetaskdefault(type, Id) {
   const apiURL = `/api/feature/default/active/?id=${Id}&type=${type}`
-  console.log(type)
   console.log('serv ActiveTasks')
   const res = await fetch(apiURL, {
     method: 'GET',
