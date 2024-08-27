@@ -28,7 +28,8 @@ export default function ComModalDeleteAgent() {
     setValuedelet(e.target.value)
   }
 
-  const handleDelete = () => {
+  const handleDelete = (e) => {
+    e.preventDefault()
     Deleteagent(selectedValue, valudelete)
     setOpenModalDelete(false)
     setReloadAgents(!reloadAgents)

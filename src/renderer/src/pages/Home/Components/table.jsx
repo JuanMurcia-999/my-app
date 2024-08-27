@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function ComTable({agents}) {
   return (
     <>
-    <div className="overflow-y-auto h-auto m-[20px] flex justify-lefth ">
+    <div className="overflow-y-auto h-auto m-[20px] flex justify-center ">
       
       <Table hoverable>
         <Table.Head>

@@ -22,11 +22,11 @@ export default function ComSidebar() {
             </Link>
 
             <Sidebar.Collapse icon={MdMonitorHeart} label="Agentes ">
-              <Sidebar.Item href="#">
+              <Sidebar.Item >
                 <ComFormCreateAgent />
               </Sidebar.Item>
 
-              <Sidebar.Item href="#">
+              <Sidebar.Item>
                 <ComModalDeleteAgent />
               </Sidebar.Item>
             </Sidebar.Collapse>

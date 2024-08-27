@@ -7,7 +7,7 @@ import { Addagent } from '../services/Create-agent'
 let BodyAgent = {
   ag_name: '',
   ip_address: '',
-  ag_type:''
+  ag_type: ''
 }
 
 export default function ComFormCreateAgent() {
@@ -25,7 +25,7 @@ export default function ComFormCreateAgent() {
     setReloadAgents(!reloadAgents)
   }
 
-  const handleSelect = (value,text) => {
+  const handleSelect = (value, text) => {
     setSelectedType(value)
     setDefault(text)
   }
@@ -60,9 +60,9 @@ export default function ComFormCreateAgent() {
             <h3 class="text-xl font-medium text-gray-900 dark:text-white">
               Registrar un nuevo Agente
             </h3>
-                    <Dropdown label={defaultt} dismissOnClick={true}>
-              <Dropdown.Item onClick={() => handleSelect('2','PC')}>PC</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleSelect('3','Router')}>Router</Dropdown.Item>
+            <Dropdown label={defaultt} dismissOnClick={true}>
+              <Dropdown.Item onClick={() => handleSelect('2', 'PC')}>PC</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('3', 'Router')}>Router</Dropdown.Item>
             </Dropdown>
             <div>
               <div class="mb-2 block">

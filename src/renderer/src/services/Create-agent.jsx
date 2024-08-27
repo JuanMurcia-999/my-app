@@ -10,8 +10,14 @@ export function Addagent(Body) {
       'Content-type': 'application/json; charset=UTF-8'
     }
   })
-    .then((response) => response.json())
-    .then( toast.success('Agente agregado'))
+    .then((response) => {
+      if (!response.ok){
+        toast.error('Error al agregar el agente')
+      } else{
+        toast.success('Agente agregado')
+      }
+
+    })
     .catch(error => {
       toast.error('No es posible agregar el usuario')
 

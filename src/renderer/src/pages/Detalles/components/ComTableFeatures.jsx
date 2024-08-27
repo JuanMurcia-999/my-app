@@ -8,23 +8,24 @@ import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 import { ModalAlarms } from './Modal-alarm'
 
 export default function ComTableFeatures({ features, infoagent }) {
-  const { setDatesgraf,reloadFeatures, setReloadFeatures } = useDetallesConext()
+  const { setDatesgraf, reloadFeatures, setReloadFeatures, datasensor ,setDatasensor} = useDetallesConext()
   const [datos, setDatos] = useState({ value: [], created_at: [] })
 
   const handleClick = (ID) => {
     DeleteSensor(ID, infoagent.Host)
     setReloadFeatures(!reloadFeatures)
-    setDatesgraf([])
+
   }
   const handleClickDos = ({ id_adminis, id_agent, id_sensor }) => {
-    Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent, id_sensor: id_sensor }).then(
-      (datos) => setDatesgraf(datos)
-    )
+    setDatasensor({ id_adminis, id_agent, id_sensor })
+    // Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent, id_sensor: id_sensor }).then(
+    //   (datos) => setDatesgraf(datos)
+    // )
   }
 
   return (
     <>
-      <div className="overflow-y-auto h-[20rem] m-12  flex justify-center">
+      <div className="overflow-y-auto h-[20rem] m-12 scrollbar-hide">
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell>ID</Table.HeadCell>

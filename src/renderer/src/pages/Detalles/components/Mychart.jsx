@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Chart } from 'chart.js/auto'
 
-
-export default function MyChart({ labels, data }) {
+export default function MyChart({ data }) {
   let datasets = []
+  let labels = []
+  let cosa = []
+
   const colors = [
     '#B22222',
     '#FF4500',
@@ -33,16 +35,17 @@ export default function MyChart({ labels, data }) {
   ]
 
   if (data) {
-    Object.keys(data).forEach((clave) => {
+    datasets = data.data.datagrafic.map((sensor) => {
       const ColorOne = colors[Math.floor(Math.random() * colors.length)]
       const ColorTwo = colors[Math.floor(Math.random() * colors.length)]
-      datasets.push({
-        label: clave,
-        data: data[clave].map((str) => parseFloat(str, 10.0)),
+      labels = sensor.time
+      return {
+        label: sensor.name,
+        data: sensor.values,
         backgroundColor: ColorOne, // Asigna un color basado en el índice
         borderColor: ColorTwo,
         borderWidth: 1
-      })
+      }
     })
   }
 
@@ -54,7 +57,7 @@ export default function MyChart({ labels, data }) {
   useEffect(() => {
     const ctx = document.getElementById('myChart')
     const myChart = new Chart(ctx, {
-      type: 'bar', // Asegúrate de que el tipo de gráfico sea correcto
+      type: 'line', // Asegúrate de que el tipo de gráfico sea correcto
       data: chartData,
       options: {
         // Aquí puedes agregar opciones de configuración adicionales
@@ -73,7 +76,7 @@ export default function MyChart({ labels, data }) {
 
   return (
     <div className=" flex justify-center h-[50%]  dark:bg-slate-200">
-      <canvas id="myChart"  />
+      <canvas id="myChart" />
     </div>
   )
 }

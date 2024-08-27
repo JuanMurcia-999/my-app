@@ -12,12 +12,13 @@ export default function DeleteAgent(field, value) {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error('Error en la petición DELETE');
+      toast.error('Error en la petición DELETE');
+    }else{
+      toast.success('agente eliminado')
     }
-    return response.json(); // O response.text() dependiendo de la respuesta
+
   })
-  .then( toast.error('agente eliminado'))
   .catch(error => {
-    console.error('Hubo un error:', error);
+    toast.error('Hubo un error:', error);
   })
 }

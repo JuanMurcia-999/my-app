@@ -9,13 +9,13 @@ export default function TableIftable({ interfaces =[] }) {
   
   return (
     <>
-      <div className="overflow-y-auto h-[20rem] m-12 flex justify-center scrollbar-hide">
-        <Table hoverable>
-          <Table.Head>
-            <Table.HeadCell>ifIndex</Table.HeadCell>
-            <Table.HeadCell>ifDescr</Table.HeadCell>
-            <Table.HeadCell>ifPhysAddress</Table.HeadCell>
-            <Table.HeadCell>ifOutOctets</Table.HeadCell>
+      <div className="overflow-y-auto h-[20rem] m-12 flex justify-center scrollbar-hide ">
+        <Table hoverable className=''>
+          <Table.Head >
+            <Table.HeadCell >ifIndex</Table.HeadCell>
+            <Table.HeadCell >ifDescr</Table.HeadCell>
+            <Table.HeadCell >ifPhysAddress</Table.HeadCell>
+            <Table.HeadCell >ifOutOctets</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
             {interfaces.map((inter) => (

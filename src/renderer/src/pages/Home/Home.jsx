@@ -37,7 +37,6 @@ export default function Home() {
           {view ? <ListOfAgents agents={agents} /> : <ComTable agents={agents} />}
         </div>
 
-        <span> Todos los sensores</span>
         <div className=" bg-slate-100 m-[10px] h-dvh  dark:bg-gray-700"></div>
       </div>
     </>
