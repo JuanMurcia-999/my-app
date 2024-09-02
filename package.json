@@ -22,6 +22,7 @@
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "@remixicon/react": "^4.2.0",
+    "@textea/json-viewer": "^3.5.0",
     "@tremor/react": "^3.17.4",
     "chart.js": "^4.4.3",
     "electron-updater": "^6.1.7",

@@ -30,14 +30,14 @@ export default function TabledefaultTasks({ Sensors, Mode, infoAgent }) {
       setReloadFeatures(!reloadFeatures)
     } else {
       Disable_task(Body)
-      setReloadactive(!reloadActive)
       setReloadFeatures(!reloadFeatures)
+      setReloadactive(!reloadActive)
     }
   }
 
   return (
     <>
-      <div className="flex justify-center overflow-y-auto h-[20rem] m-12 ">
+      <div className="flex justify-center overflow-y-auto h-[30rem] m-12 scrollbar-hide ">
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell>Nombre</Table.HeadCell>

@@ -8,7 +8,7 @@ export default function Tablestadisticts() {
   const datagrafics = datesGraf.data.datagrafic
   console.log(datagrafics)
   return (
-    <div className="overflow-y-auto h-[20rem] mt-[30px] scrollbar-hide p-[20px] ">
+    <div className="overflow-y-auto h-[30rem] mt-[30px] scrollbar-hide p-[20px]">
       {datagrafics.map((sensor) => (
         <>
           <span className=" text-xl font-semibold dark:text-white">{sensor.name}</span>

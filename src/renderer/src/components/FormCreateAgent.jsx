@@ -63,6 +63,7 @@ export default function ComFormCreateAgent() {
             <Dropdown label={defaultt} dismissOnClick={true}>
               <Dropdown.Item onClick={() => handleSelect('2', 'PC')}>PC</Dropdown.Item>
               <Dropdown.Item onClick={() => handleSelect('3', 'Router')}>Router</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleSelect('4', 'Mixto')}>Mixto</Dropdown.Item>
             </Dropdown>
             <div>
               <div class="mb-2 block">

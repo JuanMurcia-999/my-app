@@ -43,7 +43,7 @@ export function ModalInterfaces({ infoagent }) {
 
   return (
     <>
-      <Button className="  mt-[10px] ml-[10px] w-[8rem]" onClick={() => setOpenModal(true)}>
+      <Button className=" h-[60px] mt-[10px] ml-[10px] w-[8rem]" onClick={() => setOpenModal(true)}>
         Agregar al sensor
       </Button>
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>

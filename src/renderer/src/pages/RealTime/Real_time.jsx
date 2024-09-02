@@ -1,61 +1,91 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
-const WebSocketComponent = () => {
-  const [dataStore, setDataStore] = useState({}); // Diccionario
-  const [dataArray, setDataArray] = useState([]); // Array
-  const ws = useRef(null);
+
+function WebSocketComponent() {
+  const [clientId, setClienId] = useState(
+    Math.floor(new Date().getTime() / 1000)
+  );
+
+  const [chatHistory, setChatHistory] = useState([]);
+  const [isOnline, setIsOnline] = useState(false);
+  const [textValue, setTextValue] = useState("");
+  const [websckt, setWebsckt] = useState();
+
+  const [message, setMessage] = useState([]);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    ws.current = new WebSocket('ws://localhost:8000/ws');
+    const url = "ws://api/ws/" + clientId;
+    const ws = new WebSocket(url);
 
-    ws.current.onopen = () => {
-      console.log('Connected to WebSocket');
+    ws.onopen = (event) => {
+      ws.send("Connect");
     };
 
-    ws.current.onmessage = (event) => {
-      const data = JSON.parse(event.data).data;
-
-      // Actualizar diccionario
-      setDataStore(prevDataStore => {
-        const newDataStore = { ...prevDataStore };
-        if (!newDataStore[data.id]) {
-          newDataStore[data.id] = [];
-        }
-        newDataStore[data.id].push(data);
-        return newDataStore;
-      });
-
-      // Actualizar array
-      setDataArray(prevDataArray => [...prevDataArray, data]);
+    // recieve message every start page
+    ws.onmessage = (e) => {
+      const message = JSON.parse(e.data);
+      setMessages([...messages, message]);
     };
 
-    ws.current.onclose = () => {
-      console.log('Disconnected from WebSocket');
-    };
-
-    return () => {
-      ws.current.close();
-    };
-  }, []);
+    setWebsckt(ws);
+    //clean up function when we close page
+    return () => ws.close();
+  }, [message,messages]);
 
   const sendMessage = () => {
-    const message = { id: 'uniqueId', content: 'Hello, server!' };
-    ws.current.send(JSON.stringify(message));
+    websckt.send(message);
+    // recieve message every send message
+    websckt.onmessage = (e) => {
+      const message = JSON.parse(e.data);
+      setMessages([...messages, message]);
+    };
+    setMessage([]);
   };
 
   return (
-    <div>
-      <button onClick={sendMessage}>Send Message</button>
-      <div>
-        <h2>Data Store (Dictionary)</h2>
-        <pre>{JSON.stringify(dataStore, null, 2)}</pre>
-      </div>
-      <div>
-        <h2>Data Array</h2>
-        <pre>{JSON.stringify(dataArray, null, 2)}</pre>
+    <div className="container">
+      <h1>Chat</h1>
+      <h2>Your client id: {clientId} </h2>
+      <div className="chat-container">
+        <div className="chat">
+          {messages.map((value, index) => {
+            if (value.clientId === clientId) {
+              return (
+                <div key={index} className="my-message-container">
+                  <div className="my-message">
+                    <p className="client">client id : {clientId}</p>
+                    <p className="message">{value.message}</p>
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div key={index} className="another-message-container">
+                  <div className="another-message">
+                    <p className="client">client id : {clientId}</p>
+                    <p className="message">{value.message}</p>
+                  </div>
+                </div>
+              );
+            }
+          })}
+        </div>
+        <div className="input-chat-container">
+          <input
+            className="input-chat"
+            type="text"
+            placeholder="Chat message ..."
+            onChange={(e) => setMessage(e.target.value)}
+            value={message}
+          ></input>
+          <button className="submit-chat" onClick={sendMessage}>
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default WebSocketComponent;

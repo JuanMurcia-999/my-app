@@ -23,10 +23,10 @@ export function Enable_task(Body) {
     })
 }
 
-export function Disable_task(Body) {
+export async function Disable_task(Body) {
   const apiURL = '/api/task/stop/'
   console.log('serv DisableTask')
-  fetch(apiURL, {
+  await fetch(apiURL, {
     method: 'POST',
     body: JSON.stringify(Body),
     headers: {

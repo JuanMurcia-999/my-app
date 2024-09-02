@@ -5,6 +5,8 @@ import { BsFillFileTextFill } from 'react-icons/bs'
 import ComFormCreateAgent from './FormCreateAgent'
 import { Link } from 'react-router-dom'
 import ComModalDeleteAgent from './DeleteAgent'
+import { GrActions } from 'react-icons/gr'
+import { GiBoxTrap } from "react-icons/gi";
 
 export default function ComSidebar() {
   console.log('cargando Sidebar')
@@ -22,7 +24,7 @@ export default function ComSidebar() {
             </Link>
 
             <Sidebar.Collapse icon={MdMonitorHeart} label="Agentes ">
-              <Sidebar.Item >
+              <Sidebar.Item>
                 <ComFormCreateAgent />
               </Sidebar.Item>
 
@@ -33,11 +35,15 @@ export default function ComSidebar() {
 
             <Sidebar.Collapse icon={BsFillFileTextFill} label="Mibs ">
               <Sidebar.Item href="#">Subir Mib</Sidebar.Item>
-              <Sidebar.Item href="#">Todas las MIB</Sidebar.Item>
+              <Link to="/mibs">
+                <Sidebar.Item>Todas las mibs</Sidebar.Item>
+              </Link>
             </Sidebar.Collapse>
-
-            <Link to="/ws">
-              <Sidebar.Item >Websocket</Sidebar.Item>
+            <Link to="/Operations">
+              <Sidebar.Item icon={GrActions }>Operaciones</Sidebar.Item>
+            </Link>
+            <Link to="/Traps">
+              <Sidebar.Item icon={GiBoxTrap }>Traps</Sidebar.Item>
             </Link>
           </Sidebar.ItemGroup>
         </Sidebar.Items>

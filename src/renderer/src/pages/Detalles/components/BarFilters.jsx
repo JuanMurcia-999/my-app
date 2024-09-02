@@ -8,6 +8,7 @@ import { TextInput } from 'flowbite-react'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 import { Get_history_filter } from '../../../services/get-history-filter'
 const Body = {
+
   id_agent: 0,
   id_adminis: 0,
   id_sensor: 0,
@@ -15,19 +16,19 @@ const Body = {
   timebase: 'now',
   daterange: '-0 day',
   timerange: '-1 hour',
-  limit: 0,
+  limit: 100,
   offset: 0
 }
 
 export function BarFilters({ infoAgent }) {
-  const [limit, setLimit] = useState(null)
+  const [limit, setLimit] = useState(100)
   const [time, setTime] = useState('-1 hour')
   const [day, setDay] = useState('-0 days')
   const [selectedDate, setSelectedDate] = useState('now')
   const { datasensor, setDatasensor, setDatesgraf } = useDetallesConext()
 
   const handleClear = () => {
-    setLimit(null)
+    setLimit(100)
     setTime('-1 hour')
     setDay('-0 days')
     setSelectedDate('now')

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 import { useParams } from 'react-router'
 import Get_iftable from '../../../services/get-iftable'
 import TableIftable from '../components/TableifTable'
@@ -7,23 +7,30 @@ import TabledefaultTasks from '../components/tableDefaultTasks'
 import { ModalInterfaces } from '../components/Modal-interfaces'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
-
-export function ViewInfo({infoAgent}) {
+export function ViewInfo({ infoAgent }) {
   let { Ip, Id, Host, type } = useParams()
   const [iftable, setIftable] = useState([])
   const [availabletasks, setAvailabletasks] = useState([])
   const [activetasks, setActivetasks] = useState([])
-  const {reloadActive}= useDetallesConext()
+  const { reloadActive } = useDetallesConext()
 
-  useEffect(() => {
-    console.log('efect todos los sensores')
-    Get_iftable(Ip).then((datos) => setIftable(datos))
-  }, [])
 
   useEffect(() => {
     Availabletaskdefault(type, Id).then((datos) => setAvailabletasks(datos))
     Activetaskdefault(type, Id).then((datos) => setActivetasks(datos))
-  }, [reloadActive])
+  }, [reloadActive,type,Id])
+
+
+
+  useEffect(() => {
+    
+  
+    console.log('efect todos los sensores')
+    Get_iftable(Ip).then((datos) => setIftable(datos))
+
+    
+  }, [])
+
 
 
   return (
@@ -32,12 +39,11 @@ export function ViewInfo({infoAgent}) {
         <span class="self-center whitespace-nowrap bg-slate-100w-[98%] text-xl font-semibold dark:text-white">
           Interfaces
         </span>
-        <div className="">
+        <div className="flex justify-center">
           <ModalInterfaces infoagent={infoAgent} />
-          
+
           <TableIftable interfaces={iftable} />
         </div>
-
         <span class="self-center whitespace-nowrap bg-slate-100w-[98%] text-xl font-semibold dark:text-white">
           Sensores disponibles
         </span>

@@ -6,8 +6,8 @@ import icon from '../../resources/icon.png?asset'
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1500,
-    height: 1080,
+    width: 1300,
+    height: 720,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -16,9 +16,15 @@ function createWindow() {
       sandbox: false
     }
   })
-
+ 
+  // mainWindow.webContents.on('did-finish-load', () => {
+  //   mainWindow.webContents.setZoomFactor(0.8); // O setZoomLevel
+  //   mainWindow.maximize();
+  // });
+  
   mainWindow.on('ready-to-show', () => {
-  //mainWindow.show()
+  // mainWindow.show()
+
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -33,6 +39,8 @@ function createWindow() {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+
 }
 
 // This method will be called when Electron has finished

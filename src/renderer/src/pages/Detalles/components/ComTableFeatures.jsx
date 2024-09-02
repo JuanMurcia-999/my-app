@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 import { ModalAlarms } from './Modal-alarm'
 
+
 export default function ComTableFeatures({ features, infoagent }) {
   const { setDatesgraf, reloadFeatures, setReloadFeatures, datasensor ,setDatasensor} = useDetallesConext()
   const [datos, setDatos] = useState({ value: [], created_at: [] })
@@ -16,16 +17,17 @@ export default function ComTableFeatures({ features, infoagent }) {
     setReloadFeatures(!reloadFeatures)
 
   }
-  const handleClickDos = ({ id_adminis, id_agent, id_sensor }) => {
-    setDatasensor({ id_adminis, id_agent, id_sensor })
+  const handleClickDos = ({ id_adminis, id_agent, id_sensor,ag_name }) => {
+    setDatasensor({ id_adminis, id_agent, id_sensor,ag_name })
     // Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent, id_sensor: id_sensor }).then(
     //   (datos) => setDatesgraf(datos)
     // )
+    console.log(infoagent)
   }
 
   return (
     <>
-      <div className="overflow-y-auto h-[20rem] m-12 scrollbar-hide">
+      <div className="overflow-y-auto h-[30rem] m-12 scrollbar-hide">
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell>ID</Table.HeadCell>
@@ -64,7 +66,8 @@ export default function ComTableFeatures({ features, infoagent }) {
                     handleClickDos({
                       id_adminis: feature.id_adminis,
                       id_sensor: feature.id_sensor,
-                      id_agent: feature.agent.id_agent
+                      id_agent: feature.agent.id_agent,
+                      ag_name: infoagent.Host
                     })
                   }}
                 >
