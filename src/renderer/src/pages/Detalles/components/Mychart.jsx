@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Chart } from 'chart.js/auto'
+import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
 export default function MyChart({ data }) {
+  const {typegraf, setTypegraf} = useDetallesConext()
+
   let datasets = []
   let labels = []
   let cosa = []
@@ -57,7 +60,7 @@ export default function MyChart({ data }) {
   useEffect(() => {
     const ctx = document.getElementById('myChart')
     const myChart = new Chart(ctx, {
-      type: 'line', // Asegúrate de que el tipo de gráfico sea correcto
+      type: typegraf, // Asegúrate de que el tipo de gráfico sea correcto
       data: chartData,
       options: {
         // Aquí puedes agregar opciones de configuración adicionales
@@ -75,8 +78,8 @@ export default function MyChart({ data }) {
   }, [chartData])
 
   return (
-    <div className=" flex justify-center h-[50%]  dark:bg-slate-200">
-      <canvas id="myChart" />
+    <div className=" flex justify-center h-[50%]  dark:bg-slate-200  ">
+      <canvas className='dark:text-white' id="myChart" />
     </div>
   )
 }

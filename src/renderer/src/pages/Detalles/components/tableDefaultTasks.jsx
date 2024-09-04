@@ -20,7 +20,7 @@ export default function TabledefaultTasks({ Sensors, Mode, infoAgent }) {
     Body.id_feature = sensor.id_feature
     Body.id_agent = infoAgent.Id
     Body.params = {
-      timer: 10,
+      timer: 1,
       id_adminis: id_feature
     }
 

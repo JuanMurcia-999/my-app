@@ -1,16 +1,37 @@
+import TableTraps from "./components/TableTraps"
+import GetTraps from "../../services/get-all-traps"
+import { useState, useEffect } from "react"
+import { Trapsprovaider } from "../../contexts/TrapsContext"
+import Message from "./components/message"
+
 export default function Traps() {
+  const [traps, setTraps]=useState([])
+  
+
+
+  useEffect(() => {
+    console.log('efecto agentes')
+    GetTraps().then((datos) => setTraps(datos))
+  }, [])
+
+
+
   return (
     <>
+    <Trapsprovaider>
       <div className="flex flex-col z-20 pt-2 mt-[2rem] mr-[60px] ml-[60px]  bg-slate-100 dark:bg-gray-700  ">
         <span class="self-center whitespace-nowrap bg-slate-100w-[98%] mb-[40px] text-xl font-semibold dark:text-white">
           Historial Traps
         </span>
         <div className=" flex justify-center">
-          <div className="bg-orange-600 w-[40%] h-[40rem] ">Lista</div>
+          <div className="w-[45%] h-[40rem] ">
+            <TableTraps  Traps={traps}/>
+          </div>
 
-          <div className="bg-lime-800 w-[40%] ml-[50px] ">imprimir</div>
+          <Message/>
         </div>
       </div>
+      </Trapsprovaider>
     </>
   )
 }

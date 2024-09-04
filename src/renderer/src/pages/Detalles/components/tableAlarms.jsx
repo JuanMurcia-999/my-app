@@ -14,7 +14,7 @@ const {reloadalarms, setReloadalarms}= useDetallesConext()
 
   return (
     <>
-      <div className="overflow-y-auto h-[20rem] m-12 flex justify-center scrollbar-hide">
+      <div className="overflow-y-auto h-[40rem] m-12 flex justify-center scrollbar-hide">
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell>ID SENSOR</Table.HeadCell>

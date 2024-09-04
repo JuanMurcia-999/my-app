@@ -33,7 +33,7 @@ export default function ComTableFeatures({ features, infoagent }) {
             <Table.HeadCell>ID</Table.HeadCell>
             <Table.HeadCell>OID</Table.HeadCell>
             <Table.HeadCell>Nombre sensor</Table.HeadCell>
-            <Table.HeadCell>Timer</Table.HeadCell>
+            <Table.HeadCell>Timer(min)</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
             <Table.HeadCell>Ver</Table.HeadCell>
             <Table.HeadCell>Alrma</Table.HeadCell>

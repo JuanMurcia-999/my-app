@@ -25,15 +25,19 @@ export function BarFilters({ infoAgent }) {
   const [time, setTime] = useState('-1 hour')
   const [day, setDay] = useState('-0 days')
   const [selectedDate, setSelectedDate] = useState('now')
-  const { datasensor, setDatasensor, setDatesgraf } = useDetallesConext()
+  const { datasensor, setDatasensor, setDatesgraf,setTypegraf } = useDetallesConext()
 
   const handleClear = () => {
     setLimit(100)
-    setTime('-1 hour')
+    setTime('-6 hour')
     setDay('-0 days')
     setSelectedDate('now')
     Body.limit=0
   }
+  const handletype= (value)=>{
+    setTypegraf(value)
+  }
+
   const handleLimit = (limit) => {
     setLimit(limit)
   }
@@ -95,6 +99,11 @@ export function BarFilters({ infoAgent }) {
         <Dropdown.Item onClick={() => handleDay('-15 days')}> 15 dias </Dropdown.Item>
         <Dropdown.Item onClick={() => handleDay('-30 days')}> 30 dias </Dropdown.Item>
 
+      </Dropdown>
+
+      <Dropdown color="light" label="grafica" dismissOnClick={true}>
+        <Dropdown.Item onClick={() => handletype('bar')}>Barras</Dropdown.Item>
+        <Dropdown.Item onClick={() => handletype('line')}>Lineas</Dropdown.Item>
       </Dropdown>
 
       <Datepicker onSelectedDateChanged={handleDate} />

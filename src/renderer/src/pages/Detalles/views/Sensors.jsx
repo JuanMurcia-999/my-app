@@ -9,7 +9,7 @@ import Tablestadisticts from '../components/statdisticts'
 
 export function ViewSensors({ infoAgent }) {
   const [featuresAgent, setFeaturesAgent] = useState([])
-  const { reloadFeatures, setReloadFeatures, datesGraf } = useDetallesConext()
+  const { reloadFeatures, setReloadFeatures, datesGraf,setTypegraf } = useDetallesConext()
 
   useEffect(() => {
     console.log('efec sensores individuales')

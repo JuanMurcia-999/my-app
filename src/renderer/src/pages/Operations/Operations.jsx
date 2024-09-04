@@ -54,7 +54,7 @@ export default function Operation() {
               onChange={handleChangeset}
             />
             <Button className=" w-[100px]" onClick={() => handleOperation('Get')}>
-              Cosultar
+              GET
             </Button>
           </span>
           <span class=" whitespace-nowrap bg-slate-100w-[98%] text-xl font-semibold dark:text-white">
@@ -68,7 +68,7 @@ export default function Operation() {
 
         <Card className="max-w-md mt-[40px]">
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Settear un objeto OID
+            Modificar un objeto OID
           </h5>
           <span className="flex flex-col space-y-4 ">
             <TextInput
@@ -94,7 +94,7 @@ export default function Operation() {
             />
           </span>
           <Button className="w-[100px]" onClick={() => handleOperation('Set')}>
-            Set
+            SET
           </Button>
         </Card>
       </div>

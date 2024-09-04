@@ -20,7 +20,7 @@ export default function ComSidebar() {
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             <Link to="/">
-              <Sidebar.Item icon={HiChartPie}>Dashboard</Sidebar.Item>
+              <Sidebar.Item icon={HiChartPie}>Home</Sidebar.Item>
             </Link>
 
             <Sidebar.Collapse icon={MdMonitorHeart} label="Agentes ">
@@ -33,12 +33,7 @@ export default function ComSidebar() {
               </Sidebar.Item>
             </Sidebar.Collapse>
 
-            <Sidebar.Collapse icon={BsFillFileTextFill} label="Mibs ">
-              <Sidebar.Item href="#">Subir Mib</Sidebar.Item>
-              <Link to="/mibs">
-                <Sidebar.Item>Todas las mibs</Sidebar.Item>
-              </Link>
-            </Sidebar.Collapse>
+     
             <Link to="/Operations">
               <Sidebar.Item icon={GrActions }>Operaciones</Sidebar.Item>
             </Link>

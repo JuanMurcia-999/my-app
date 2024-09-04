@@ -32,6 +32,7 @@ export function DetallesProvaider(props) {
   const [datesGraf, setDatesgraf] = useState(model)
   const [reloadalarms, setReloadalarms] = useState(false)
   const [datasensor, setDatasensor] = useState({ id_adminis: 0, id_agent: 0, id_sensor: null })
+  const [typegraf, setTypegraf] = useState('bar')
 
   const contextutilities = {
     openAddSesnor,
@@ -47,7 +48,8 @@ export function DetallesProvaider(props) {
     reloadalarms,
     setReloadalarms,
     datasensor,
-    setDatasensor
+    setDatasensor,
+    typegraf, setTypegraf
   }
 
   return (
