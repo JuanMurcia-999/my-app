@@ -25,15 +25,22 @@ export default function TabledefaultTasks({ Sensors, Mode, infoAgent }) {
     }
 
     if (Mode) {
-      Enable_task(Body)
+      Enable_task(Body).then(state=>{
+      console.log(state)
+      if (state){
       setReloadactive(!reloadActive)
       setReloadFeatures(!reloadFeatures)
+    }})
     } else {
-      Disable_task(Body)
+      Disable_task(Body).then(state=>{
+        console.log(state)
+        if (state){
       setReloadFeatures(!reloadFeatures)
       setReloadactive(!reloadActive)
+    }})
     }
   }
+  
 
   return (
     <>

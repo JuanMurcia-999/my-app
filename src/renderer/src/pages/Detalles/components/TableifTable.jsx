@@ -4,18 +4,31 @@ import { Button } from 'flowbite-react'
 import { useParams } from 'react-router-dom'
 import { IoMdAddCircleOutline } from 'react-icons/io'
 
+
+const mapifOperStatus={
+  1:"up", 
+  2:"down",
+  3:"testing", 
+  4:"unknown", 
+  5:"dormant",
+  6:"notPresent", 
+  7:"lowerLayerDown" 
+}
+
+
 export default function TableIftable({ interfaces =[] }) {
   let agent = useParams()
   
   return (
     <>
-      <div className="overflow-y-auto h-[20rem] m-12 flex justify-center bg-red scrollbar-hide w-[65%] ">
+      <div className="overflow-y-auto h-[20rem] m-12 flex justify-center bg-red scrollbar-hide w-[70%] ">
         <Table hoverable className=''>
           <Table.Head >
             <Table.HeadCell >ifIndex</Table.HeadCell>
             <Table.HeadCell >ifDescr</Table.HeadCell>
             <Table.HeadCell >ifPhysAddress</Table.HeadCell>
             <Table.HeadCell >ifOutOctets</Table.HeadCell>
+            <Table.HeadCell >ifOperStatus</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
             {interfaces.map((inter) => (
@@ -29,6 +42,7 @@ export default function TableIftable({ interfaces =[] }) {
                 </Table.Cell>
                 <Table.Cell>{inter.ifPhysAddress}</Table.Cell>
                 <Table.Cell>{inter.ifOutOctets}</Table.Cell>
+                <Table.Cell>{  mapifOperStatus[inter.ifOperStatus] || 'Desconocido'}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

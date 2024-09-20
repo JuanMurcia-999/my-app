@@ -21,8 +21,10 @@ export default function ComFormCreateAgent() {
   const handleSubmit = (event) => {
     event.preventDefault()
     setOpenModalCreate(false)
-    Addagent(bodyAgent)
-    setReloadAgents(!reloadAgents)
+    Addagent(bodyAgent).then((state) => {
+      console.log(state)
+      if (state) setReloadAgents(!reloadAgents)
+    })
   }
 
   const handleSelect = (value, text) => {

@@ -12,12 +12,11 @@ const Columns = {
   ip_address: 'IP'
 }
 
-
 export default function ComModalDeleteAgent() {
   const [openModalDelete, setOpenModalDelete] = useState(false)
   const [selectedValue, setSelectedValue] = useState('Buscar por')
   const [valudelete, setValuedelet] = useState('')
-  const { reloadAgents, setReloadAgents, confirmDelete, setConfirmDelete } = useHomeContext()
+  const { reloadAgents, setReloadAgents } = useHomeContext()
 
   const handleSelect = (value) => {
     setSelectedValue(value)
@@ -30,10 +29,13 @@ export default function ComModalDeleteAgent() {
 
   const handleDelete = (e) => {
     e.preventDefault()
-    Deleteagent(selectedValue, valudelete)
+    Deleteagent(selectedValue, valudelete).then((state) => {
+      console.log(state)
+      if (state) {
+        setReloadAgents(!reloadAgents)
+      }
+    })
     setOpenModalDelete(false)
-    setReloadAgents(!reloadAgents)
-    setConfirmDelete(false)
   }
 
   return (

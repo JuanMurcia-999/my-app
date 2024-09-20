@@ -2,27 +2,25 @@ import { Table, TableCell } from 'flowbite-react'
 import { MdOutlineDelete } from 'react-icons/md'
 import DeleteSensor from '../../../services/Delete-sensor'
 import { ImStatsBars } from 'react-icons/im'
-import { Get_history_sensor } from '../../../services/get-history-sensor'
 import { useState } from 'react'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 import { ModalAlarms } from './Modal-alarm'
 
 
 export default function ComTableFeatures({ features, infoagent }) {
-  const { setDatesgraf, reloadFeatures, setReloadFeatures, datasensor ,setDatasensor} = useDetallesConext()
+  const { reloadFeatures, setReloadFeatures,setDatasensor,reloadalarms, setReloadalarms} = useDetallesConext()
   const [datos, setDatos] = useState({ value: [], created_at: [] })
 
   const handleClick = (ID) => {
-    DeleteSensor(ID, infoagent.Host)
-    setReloadFeatures(!reloadFeatures)
-
+    DeleteSensor(ID, infoagent.Host).then(state=>{
+      if(state){
+        setReloadFeatures(!reloadFeatures)
+        setReloadalarms(!reloadalarms)
+      }
+    })
   }
   const handleClickDos = ({ id_adminis, id_agent, id_sensor,ag_name }) => {
     setDatasensor({ id_adminis, id_agent, id_sensor,ag_name })
-    // Get_history_sensor({ id_adminis: id_adminis, id_agent: id_agent, id_sensor: id_sensor }).then(
-    //   (datos) => setDatesgraf(datos)
-    // )
-    console.log(infoagent)
   }
 
   return (

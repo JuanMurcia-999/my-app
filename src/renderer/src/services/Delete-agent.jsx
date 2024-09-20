@@ -3,7 +3,7 @@ import { toast, Toaster} from 'sonner';
 export default function DeleteAgent(field, value) {
   const apiURL = `/api/agents/delete/${field}?value=${value}`;
   console.log('serv deleteAgent')
-  fetch(apiURL, {
+  return fetch(apiURL, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -13,12 +13,15 @@ export default function DeleteAgent(field, value) {
   .then(response => {
     if (!response.ok) {
       toast.error('Error en la petición DELETE');
+      return false
     }else{
       toast.success('agente eliminado')
+      return true
     }
 
   })
   .catch(error => {
     toast.error('Hubo un error:', error);
+    return false
   })
 }

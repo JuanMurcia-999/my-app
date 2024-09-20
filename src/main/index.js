@@ -20,10 +20,12 @@ function createWindow() {
   // mainWindow.webContents.on('did-finish-load', () => {
   //   mainWindow.webContents.setZoomFactor(0.8); // O setZoomLevel
   //   mainWindow.maximize();
-  // });
+  //  }
+  
+  // );
   
   mainWindow.on('ready-to-show', () => {
-  // mainWindow.show()
+  //  mainWindow.show()
 
   })
 

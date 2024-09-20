@@ -9,7 +9,7 @@ export  function useHomeContext() {
 export function Homeprovaider(props) {
   const [user, setUser] = useState(null)
   const [accion, setAccion] = useState(null)
-  const [reloadAgents, setReloadAgents] = useState(true)
+  const [reloadAgents, setReloadAgents] = useState(false)
   const [confirmDelete,setConfirmDelete] =useState(false)
   const contextutilities = {
     user,
