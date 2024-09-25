@@ -1,15 +1,13 @@
 import { Table, Button } from 'flowbite-react'
-import { DeleteAlarm } from '../../../services/get-alarms'
+
 import { useTrapsContext } from '../../../contexts/TrapsContext'
-import GetMessageTraps from '../../../services/get-message-trap'
+import GetMessageTraps from '../../../services/Services-view-traps'
+
 import { IoIosRemoveCircleOutline } from 'react-icons/io'
 export default function TableTraps({Traps}) {
   const {message, setMessage} = useTrapsContext()
 
-  const handledelete = (id_alarm) => {
-    DeleteAlarm(id_alarm)
-    setReloadalarms(!reloadalarms)
-  }
+ 
 
   const handlemessage=(ID)=>{
     GetMessageTraps(ID).then((message)=> setMessage(message))

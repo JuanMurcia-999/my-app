@@ -2,7 +2,7 @@ import { Button, Label, Modal, TextInput } from 'flowbite-react'
 import { useState } from 'react'
 import { useHomeContext } from '../contexts/HomeProvaider'
 import { Dropdown } from 'flowbite-react'
-import { Addagent } from '../services/Create-agent'
+import { Addagent } from '../services/Services-agent'
 
 let BodyAgent = {
   ag_name: '',
@@ -44,7 +44,7 @@ export default function ComFormCreateAgent() {
 
   return (
     <>
-      <button class="flex-1 whitespace-nowrap px-3" onClick={() => setOpenModalCreate(true)}>
+      <button onClick={() => setOpenModalCreate(true)}>
         Nuevo agente
       </button>
       <Modal
@@ -52,6 +52,7 @@ export default function ComFormCreateAgent() {
         size="md"
         onClose={() => {
           setOpenModalCreate(false)
+
         }}
         popup
       >
@@ -62,7 +63,7 @@ export default function ComFormCreateAgent() {
             <h3 class="text-xl font-medium text-gray-900 dark:text-white">
               Registrar un nuevo Agente
             </h3>
-            <Dropdown label={defaultt} dismissOnClick={true}>
+            <Dropdown label={defaultt} dismissOnClick={true} defaultValue={bodyAgent.ag_type}>
               <Dropdown.Item onClick={() => handleSelect('2', 'PC')}>PC</Dropdown.Item>
               <Dropdown.Item onClick={() => handleSelect('3', 'Router')}>Router</Dropdown.Item>
               <Dropdown.Item onClick={() => handleSelect('4', 'Mixto')}>Mixto</Dropdown.Item>
@@ -71,13 +72,13 @@ export default function ComFormCreateAgent() {
               <div class="mb-2 block">
                 <Label htmlFor="Hostname" value="Hostname" />
               </div>
-              <TextInput name="ag_name" type="text" required onChange={handleChangeDos} />
+              <TextInput name="ag_name" type="text" value={bodyAgent.ag_name} required onChange={handleChangeDos} />
             </div>
             <div>
               <div class="mb-2 block">
                 <Label htmlFor="password" value="IP Address" />
               </div>
-              <TextInput name="ip_address" type="text" required onChange={handleChangeDos} />
+              <TextInput name="ip_address" type="text"  value={bodyAgent.ip_address}required onChange={handleChangeDos} />
             </div>
 
             <div class="w-full">

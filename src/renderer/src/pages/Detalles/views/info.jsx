@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router'
-import Get_iftable from '../../../services/get-iftable'
+import {Get_iftable, Availabletaskdefault, Activetaskdefault} from '../../../services/Services-view-general'
 import TableIftable from '../components/TableifTable'
-import { Availabletaskdefault, Activetaskdefault } from '../../../services/Default_task'
 import TabledefaultTasks from '../components/tableDefaultTasks'
 import { ModalInterfaces } from '../components/Modal-interfaces'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
@@ -14,24 +13,15 @@ export function ViewInfo({ infoAgent }) {
   const [activetasks, setActivetasks] = useState([])
   const { reloadActive } = useDetallesConext()
 
-
   useEffect(() => {
     Availabletaskdefault(type, Id).then((datos) => setAvailabletasks(datos))
     Activetaskdefault(type, Id).then((datos) => setActivetasks(datos))
-  }, [reloadActive,type,Id])
-
-
+  }, [reloadActive, type, Id])
 
   useEffect(() => {
-    
-  
     console.log('efect todos los sensores')
     Get_iftable(Ip).then((datos) => setIftable(datos))
-
-    
   }, [])
-
-
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { Table, Button } from 'flowbite-react'
 import { useParams } from 'react-router-dom'
 import { IoIosRemoveCircleOutline } from 'react-icons/io'
-import { DeleteAlarm } from '../../../services/get-alarms'
+import { DeleteAlarm } from '../../../services/Services-view-alarms'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
 export default function TableAlarms({ Alarms }) {

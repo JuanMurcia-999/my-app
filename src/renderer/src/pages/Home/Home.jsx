@@ -1,7 +1,7 @@
 import ComTable from './Components/table'
 import ListOfAgents from './Components/ListOfagents'
 import { useEffect, useState } from 'react'
-import Getagents from '../../services/get-agents'
+import Getagents from '../../services/Services-agent'
 import { Button } from 'flowbite-react'
 import { CiViewTable } from 'react-icons/ci'
 import { PiCards } from 'react-icons/pi'

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { GetAlarm } from '../../../services/get-alarms'
+import { GetAlarm } from '../../../services/Services-view-alarms'
 import TableAlarms from '../components/tableAlarms'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 import { useParams } from 'react-router'

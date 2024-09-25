@@ -1,7 +1,10 @@
+import { serverIp, serverPort } from '../components/ConfAPI'
 import { toast } from 'sonner'
 
-export function Enable_task(Body) {
-  const apiURL = '/api/exect-task/'
+const server = process.env.NODE_ENV === 'production' ? `http://${serverIp}:${serverPort}` : '/api'
+
+export async function Enable_task(Body) {
+  const apiURL = `${server}/exect-task/`
   console.log('serv EnableTask')
   return fetch(apiURL, {
     method: 'POST',
@@ -27,7 +30,7 @@ export function Enable_task(Body) {
 }
 
 export async function Disable_task(Body) {
-  const apiURL = '/api/task/stop/'
+  const apiURL = `${server}/task/stop/`
   console.log('serv DisableTask')
   return await fetch(apiURL, {
     method: 'POST',

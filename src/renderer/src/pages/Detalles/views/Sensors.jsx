@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ComAddSesnor from '../components/AddSensor'
-import Get_FeaturesAgent from '../../../services/get_FeaturesAgent'
+import { Get_FeaturesAgent } from '../../../services/Services-view-sensors'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 import ComTableFeatures from '../components/ComTableFeatures'
 import MyChart from '../components/Mychart'

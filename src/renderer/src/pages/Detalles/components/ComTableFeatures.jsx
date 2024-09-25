@@ -1,6 +1,6 @@
 import { Table, TableCell } from 'flowbite-react'
 import { MdOutlineDelete } from 'react-icons/md'
-import DeleteSensor from '../../../services/Delete-sensor'
+import { DeleteSensor } from '../../../services/Services-view-sensors'
 import { ImStatsBars } from 'react-icons/im'
 import { useState } from 'react'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'

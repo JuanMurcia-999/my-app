@@ -13,7 +13,8 @@ function createWindow() {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      sandbox: false,
+      contextIsolation: true, 
     }
   })
  
@@ -24,6 +25,7 @@ function createWindow() {
   
   // );
   
+
   mainWindow.on('ready-to-show', () => {
   //  mainWindow.show()
 
@@ -48,7 +50,24 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+app.disableHardwareAcceleration();
+
+
 app.whenReady().then(() => {
+
+  ipcMain.on('get-api-url', (event) => {
+    if (fs.existsSync(configPath)) {
+      const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+      event.reply('api-url', config.apiUrl);
+    } else {
+      event.reply('api-url', null); // Si no existe, devuelve null
+    }
+  });
+
+
+
+
+
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
@@ -70,6 +89,9 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
+
+
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

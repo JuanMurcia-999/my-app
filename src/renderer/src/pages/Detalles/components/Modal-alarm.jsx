@@ -1,7 +1,7 @@
 import { Button, Modal, Label, TextInput, Dropdown } from 'flowbite-react'
 import { useState } from 'react'
 import { RiAlarmWarningLine } from 'react-icons/ri'
-import { AddAlarm } from '../../../services/add-alarm'
+import { AddAlarm } from '../../../services/Services-view-sensors'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
 let Body = {

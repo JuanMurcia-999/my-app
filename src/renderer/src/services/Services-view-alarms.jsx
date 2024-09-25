@@ -1,4 +1,8 @@
 import { toast } from 'sonner'
+import { serverIp,serverPort } from '../components/ConfAPI'
+
+const server = process.env.NODE_ENV === 'production' ? `http://${serverIp}:${serverPort}` : '/api'
+
 
 const fromApiResponsetoalarm = (apiresponse) => {
   if (Array.isArray(apiresponse)) {
@@ -13,7 +17,7 @@ const fromApiResponsetoalarm = (apiresponse) => {
 }
 
 export async function GetAlarm(id_agent) {
-  const apiURL = `/api/alarms/all/?id_agent=${id_agent}`
+  const apiURL = `${server}/alarms/all/?id_agent=${id_agent}`
   console.log('serv AllFeatures')
   const res = await fetch(apiURL)
   const datos = await res.json()
@@ -21,8 +25,8 @@ export async function GetAlarm(id_agent) {
 }
 
 
-export function DeleteAlarm(id_alarm) {
-  const apiURL = `/api/alarms/delete/?id=${id_alarm}`
+export async function DeleteAlarm(id_alarm) {
+  const apiURL = `${server}/alarms/delete/?id=${id_alarm}`
   console.log('serv addsensor')
   fetch(apiURL, {
     method: 'DELETE',

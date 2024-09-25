@@ -2,16 +2,9 @@
 import { Button, Modal, Label, TextInput } from 'flowbite-react'
 import { useState } from 'react'
 import { IoMdAddCircleOutline } from 'react-icons/io'
-import { AddSesnor } from '../../../services/Add-sensor'
+import { AddSesnor } from '../../../services/Services-view-sensors'
 import { useDetallesConext } from '../../../contexts/DetallesProvaider'
 
-let BodySensor = {
-  ID: '',
-  ag_name: '',
-  oid: '',
-  description: '',
-  interval: ''
-}
 
 export default function ComAddSesnor({ infoagent }) {
   const [openAddSesnor, setAddSesnor] = useState(false)
@@ -66,7 +59,7 @@ export default function ComAddSesnor({ infoagent }) {
               <div class="mb-2 block">
                 <Label htmlFor="adminis_name" value="Nombre de la caracteristica" />
               </div>
-              <TextInput name="adminis_name" type="text" required onChange={handleChangeDos} />
+              <TextInput name="adminis_name" type="text"  required onChange={handleChangeDos} />
             </div>
             <div>
               <div class="mb-2 block">
@@ -77,6 +70,7 @@ export default function ComAddSesnor({ infoagent }) {
                 type="number"
                 placeholder="intervalo en minutos"
                 required
+                value={1}
                 onChange={handleChangeDos}
               />
             </div>

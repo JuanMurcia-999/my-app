@@ -2,7 +2,7 @@ import { Button, Modal } from 'flowbite-react'
 import { useState } from 'react'
 import { Dropdown } from 'flowbite-react'
 import { TextInput } from 'flowbite-react'
-import Deleteagent from '../services/Delete-agent'
+import { Deleteagent } from '../services/Services-agent'
 import { useHomeContext } from '../contexts/HomeProvaider'
 import ComAviso from './Aviso'
 

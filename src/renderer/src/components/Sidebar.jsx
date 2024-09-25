@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import ComModalDeleteAgent from './DeleteAgent'
 import { GrActions } from 'react-icons/gr'
 import { GiBoxTrap } from "react-icons/gi";
+import ApiConfig from './ConfAPI'
 
 export default function ComSidebar() {
   console.log('cargando Sidebar')
@@ -40,6 +41,10 @@ export default function ComSidebar() {
             <Link to="/Traps">
               <Sidebar.Item icon={GiBoxTrap }>Traps</Sidebar.Item>
             </Link>
+
+            <Sidebar.Item>
+                <ApiConfig />
+              </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>

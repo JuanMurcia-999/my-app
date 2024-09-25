@@ -59,7 +59,7 @@ export function ModalInterfaces({ infoagent }) {
             <div class="mb-1 block">
               <Label htmlFor="timer" value="Intervalo (min)" />
             </div>
-            <TextInput name="timer" type="text" required onChange={handleChangeDos} />
+            <TextInput name="timer" type="text" value={'1'} required onChange={handleChangeDos} />
           </span>
         </Modal.Body>
         <Modal.Footer>

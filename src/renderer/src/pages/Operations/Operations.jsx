@@ -1,7 +1,6 @@
 import { Button, Card, TextInput } from 'flowbite-react'
 import { useState } from 'react'
-import { GetObject } from '../../services/get-object'
-import { SetObject } from '../../services/set-object'
+import { GetObject, SetObject } from '../../services/Services-view-operations'
 
 export default function Operation() {
   const [valueget, setValueget] = useState()
@@ -60,11 +59,7 @@ export default function Operation() {
           <span class=" whitespace-nowrap bg-slate-100w-[98%] text-xl font-semibold dark:text-white">
             Valor : {valueget}
           </span>
-        
-
         </Card>
-
-
 
         <Card className="max-w-md mt-[40px]">
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
